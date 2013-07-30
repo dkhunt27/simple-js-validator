@@ -1,14 +1,7 @@
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
+# Ignore node_modules folder
+node_modules/
 
-pids
-logs
-results
+# IDE related directories
+.idea/
 
 npm-debug.log

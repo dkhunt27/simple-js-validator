@@ -1,0 +1,13 @@
+[
+    {
+        "name":"SimpleJS",
+        "groups": [
+            {
+                "name":"Classes",
+                "classes":[
+                    "Validator"
+                ]
+            }
+        ]
+    }
+]
