@@ -1,5 +1,5 @@
 {
-  "name": "simpleJSValidator",
+  "name": "simple-js-validator",
   "description": "Perform simple javascript validation like isEmpty and isDefined in a consistent manner.",
   "author": "Dan Hunt <dkhunt27@gmail.com>",
   "homepage": "https://github.com/dkhunt27/simpleJSValidator",
