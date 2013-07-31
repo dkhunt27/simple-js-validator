@@ -1,4 +1,4 @@
-describe('validator.Tests.Unit.js', function(){
+describe('validator.Unit.Tests.js', function(){
     "use strict";
 
     var path = require('path');

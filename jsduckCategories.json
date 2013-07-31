@@ -1,6 +1,6 @@
 [
     {
-        "name":"SimpleJS",
+        "name":"SimpleJSValidator",
         "groups": [
             {
                 "name":"Classes",

@@ -1,7 +1,5 @@
-# Ignore node_modules folder
 node_modules/
-
-# IDE related directories
 .idea/
+.grunt
 
 npm-debug.log
