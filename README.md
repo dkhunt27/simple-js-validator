@@ -1,7 +1,7 @@
-[![Build Status](https://api.travis-ci.org/dkhunt27/simpleJSValidator.png?branch=master)](https://travis-ci.org/dkhunt27/simpleJSValidator)
-[![NPM version](https://badge.fury.io/js/simpleJSValidator.png)](http://badge.fury.io/js/simpleJSValidator)
+[![Build Status](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator)
+[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)
 
-simpleValidator
+Simple Javascript Validator
 ===============
 
 Perform simple javascript validation like isEmpty and isDefined in a consistent manner.
@@ -16,8 +16,5 @@ to determine if they exist and/or are populated.
 This simple validator exposes methods to perform these checks (isDefined and isEmpty) and have a clearly defined
 use cases for when they will return true vs false.
 
-Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Validator" target="_blank">docs/index.html</a> for more details.
+Please see the <a href="http://dkhunt27.github.io/simple-js-validator/#!/api/Validator" target="_blank">docs/index.html</a> for more details.
 
-
-# Release History
-2013/07/30    v1.0.0    Initial public release
