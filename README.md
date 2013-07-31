@@ -20,4 +20,4 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Valid
 
 
 # Release History
-2013/07/30    v1.0.0    Initial public release
+v0.9.5 -- 2013/07/31 -- Initial public release
