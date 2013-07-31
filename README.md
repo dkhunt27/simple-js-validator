@@ -1,4 +1,4 @@
-[![Build Status](https://api.travis-ci.org/dkhunt27/simpleJSValidator.png?branch=dev)](https://travis-ci.org/dkhunt27/simpleJSValidator)
+[![Build Status](https://api.travis-ci.org/dkhunt27/simpleJSValidator.png?branch=master)](https://travis-ci.org/dkhunt27/simpleJSValidator)
 [![NPM version](https://badge.fury.io/js/simpleJSValidator.png)](http://badge.fury.io/js/simpleJSValidator)
 
 simpleValidator
