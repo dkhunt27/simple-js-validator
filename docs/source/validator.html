@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='Validator'>/**
+</span> * @class Validator
+ * A collection of simple validations for common actions
+ *
+ * @type {SimpleJS.Validator}
+ */
+var Validator = module.exports = function() {
+    &quot;use strict&quot;;
+
+<span id='Validator-method-isEmpty'>    /**
+</span>     * Returns ***true*** if the value is empty; otherwise, returns ***false***.
+     *
+     * Returns ***true*** for the following:
+     *
+     *  - typeof undefined
+     *  - null
+     *  - NaN
+     *  - '' (empty string)
+     *  - {} (empty object)
+     *  - [] (empty array)
+     *
+     * Returns ***false*** for the following:
+     *
+     *  - 0
+     *  - false
+     *  - anything else
+     *
+     * @param {Object} value         value to check
+     * @returns {boolean}   true if empty; false if not empty
+     */
+    var isEmpty = function(value) {
+
+        if (typeof value === 'undefined') {
+            return true;  // TRUE
+        } else if (value === null) {
+            return true;  // TRUE
+        } else if (typeof value === 'number' &amp;&amp; isNaN(value)) {
+            // NaN value check
+            // ...and yes you need to check that it is a number before checking that it is NotANumber.  Who knew?
+            return true;  // TRUE
+        } else if (value === '') {
+            return true;  // TRUE
+        } else if (value === 0) {
+            return false;
+        } else if (value === false) {
+            return false;
+        } else if (typeof value === 'object' &amp;&amp; Object.prototype.toString.call(value) === &quot;[object Date]&quot;) {
+            // new Date() is an object, but it has no keys/props so it will fail the next check
+            // so if it is a date, it is considered populated
+            // ...could use _.isDate, but trying to reduce the dependency on external libs
+            return false;
+        } else if (typeof value === 'object' &amp;&amp; Object.keys(value).length === 0) {
+            // empty object check
+            // this did not pass the new Date() check by itself, so added the date check above
+            // also the for loop with the hasOwnProperty did not pass the new Date() either
+            // also the _.isEmpty did not pass the new Date() check
+            return true; // TRUE
+
+        } else if (typeof value === 'object' &amp;&amp; typeof value.length !== 'undefined' &amp;&amp; value.length === 0) {
+            // empty array check
+            return true; // TRUE
+        } else {
+            return false;
+        }
+    };
+
+<span id='Validator-method-isNotEmpty'>    /**
+</span>     * Returns ***true*** if the value is not empty; otherwise, returns ***false***.
+     *
+     * Returns ***false*** for the following:
+     *
+     *  - typeof undefined
+     *  - null
+     *  - NaN
+     *  - '' (empty string)
+     *  - {} (empty object)
+     *  - [] (empty array)
+     *
+     * Returns ***true*** for the following:
+     *
+     *  - 0
+     *  - false
+     *  - anything else
+     *
+     * @param {Object} value         value to check
+     * @returns {boolean}   true if not empty; false if empty
+     */
+    var isNotEmpty = function(value) {
+        return !isEmpty(value);
+    };
+
+<span id='Validator-method-isDefined'>    /**
+</span>     * Returns ***true*** if the value is defined; otherwise, returns ***false***.
+     *
+     * Returns ***false*** for the following:
+     *
+     *  - typeof undefined
+     *  - null
+     *  - NaN
+     *
+     * Returns ***true*** for the following:
+     *
+     *  - 0
+     *  - false
+     *  - '' (empty string)
+     *  - {} (empty object)
+     *  - [] (empty array)
+     *  - anything else
+     *
+     * @param {Object} value         value to check
+     * @returns {boolean}   true if defined; false if not defined
+     */
+    var isDefined = function(value) {
+
+        if (typeof value === 'undefined') {
+            return false;
+        } else if (value === null) {
+            return false;
+        } else if (typeof value === 'number' &amp;&amp; isNaN(value)) {
+            // NaN value check
+            // ...and yes you need to check that it is a number before checking that it is NotANumber.  Who knew?
+            return false;
+        } else if (value === '') {
+            return true;  // TRUE
+        } else if (value === 0) {
+            return true;  // TRUE
+        } else if (value === false) {
+            return true;  // TRUE
+        } else if (typeof value === 'object' &amp;&amp; Object.keys(value).length === 0) {
+            // empty object check
+            return true; // TRUE
+        } else if (typeof value === 'object' &amp;&amp; typeof value.length !== 'undefined' &amp;&amp; value.length === 0) {
+            // empty array check
+            return true; // TRUE
+        } else {
+            return true;  // TRUE
+        }
+    };
+
+<span id='Validator-method-isNotDefined'>    /**
+</span>     * Returns ***true*** if the value is not defined; otherwise, returns ***false***.
+     *
+     * Returns ***true*** for the following:
+     *
+     *  - typeof undefined
+     *  - null
+     *  - NaN
+     *
+     * Returns ***false*** for the following:
+     *
+     *  - 0
+     *  - false
+     *  - '' (empty string)
+     *  - {} (empty object)
+     *  - [] (empty array)
+     *  - anything else
+     *
+     * @param {Object} value         value to check
+     * @returns {boolean}   true if not defined; false if defined
+     */
+    var isNotDefined = function(value) {
+        return !isDefined(value);
+    };
+
+<span id='Validator-method-assertIsDefined'>    /**
+</span>     * Throws an error if the object is not defined (see {@link #isNotDefined} method for definition).
+     *
+     * @param {String} toAssertName      The name associated with the object.  This name is used when the error is thrown.
+     * @param {Object} toAssertObj       The object to assert against
+     * @returns {void}
+     */
+    var assertIsDefined = function(toAssertName, toAssertObj){
+        if (isNotDefined(toAssertObj)) {
+            throw new Error(toAssertName + ' is not defined.');
+        }
+    };
+
+<span id='Validator-method-assertIsNotDefined'>    /**
+</span>     * Throws an error if the object is defined (see {@link #isDefined} method for definition).
+     *
+     * @param {String} toAssertName      The name associated with the object.  This name is used when the error is thrown.
+     * @param {Object} toAssertObj       The object to assert against
+     * @returns {void}
+     */
+    var assertIsNotDefined = function(toAssertName, toAssertObj){
+        if (isDefined(toAssertObj)) {
+            throw new Error(toAssertName + ' is defined.');
+        }
+    };
+
+<span id='Validator-method-assertIsNotEmpty'>    /**
+</span>     * Throws an error if the object is empty (see {@link #isEmpty} method for definition).
+     *
+     * @param {String} toAssertName      The name associated with the object.  This name is used when the error is thrown.
+     * @param {Object} toAssertObj       The object to assert against
+     * @returns {void}
+     */
+    var assertIsNotEmpty = function(toAssertName, toAssertObj){
+        if (isEmpty(toAssertObj)) {
+            throw new Error(toAssertName + ' is empty.');
+        }
+    };
+
+<span id='Validator-method-assertIsEmpty'>    /**
+</span>     * Throws an error if the object is not empty (see {@link #isNotEmpty} method for definition).
+     *
+     * @param {String} toAssertName      The name associated with the object.  This name is used when the error is thrown.
+     * @param {Object} toAssertObj       The object to assert against
+     * @returns {void}
+     */
+    var assertIsEmpty = function(toAssertName, toAssertObj){
+        if (isNotEmpty(toAssertObj)) {
+            throw new Error(toAssertName + ' is not empty.');
+        }
+    };
+
+    return {
+        isEmpty: isEmpty,
+        isNotEmpty: isNotEmpty,
+        isDefined: isDefined,
+        isNotDefined: isNotDefined,
+        assertIsEmpty: assertIsEmpty,
+        assertIsNotEmpty: assertIsNotEmpty,
+        assertIsDefined: assertIsDefined,
+        assertIsNotDefined: assertIsNotDefined
+    };
+}();</pre>
+</body>
+</html>
