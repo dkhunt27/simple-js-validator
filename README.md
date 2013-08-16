@@ -45,7 +45,7 @@ Here is a simple table to illustrate the differences.
 <img src="./img/comparison.png" />
 
 
-Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Validator" target="_blank">docs/index.html</a> for more details.
+Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/SimpleJS.Validator" target="_blank">docs/index.html</a> for more details. If link does not work, just open the index.html in the docs folder.
 
 # Installation
 

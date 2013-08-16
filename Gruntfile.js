@@ -88,7 +88,7 @@ module.exports = function(grunt) {
         grunt.task.run('jsduck');
         grunt.task.run('gh-pages');
         grunt.task.run('bumpup:' + type); // Bump up the package version
-        grunt.task.runt('tagrelease');
+        grunt.task.run('tagrelease');
                                           // still need to push the commit up
     });
 
