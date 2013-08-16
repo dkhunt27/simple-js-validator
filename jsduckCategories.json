@@ -5,7 +5,7 @@
             {
                 "name":"Classes",
                 "classes":[
-                    "Validator"
+                    "SimpleJS.Validator"
                 ]
             }
         ]
