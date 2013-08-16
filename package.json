@@ -1,40 +1,40 @@
 {
-    "name": "simple-js-validator",
-    "description": "Perform simple javascript validation like isEmpty and isDefined in a consistent manner.",
-    "author": "Dan Hunt <dkhunt27@gmail.com>",
-    "homepage": "https://github.com/dkhunt27/simple-js-validator",
-    "repository": {
-        "type": "git",
-        "url": "https://dkhunt27@github.com/dkhunt27/simple-js-validator.git"
-    },
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "https://github.com/dkhunt27/simple-js-validator/raw/master/LICENSE"
-        }
-    ],
-    "keywords": [
+  "name": "simple-js-validator",
+  "description": "Perform simple javascript validation like isEmpty and isDefined in a consistent manner.",
+  "author": "Dan Hunt <dkhunt27@gmail.com>",
+  "homepage": "https://github.com/dkhunt27/simple-js-validator",
+  "repository": {
+    "type": "git",
+    "url": "https://dkhunt27@github.com/dkhunt27/simple-js-validator.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/dkhunt27/simpleJSValidator/raw/master/LICENSE"
+    }
+  ],
+  "keywords": [
         "javascript validation",
         "isempty",
         "is empty",
         "isdefined",
         "is defined"
     ],
-    "version": "0.9.7",
-    "main": "lib/validator.js",
-    "dependencies": {},
-    "devDependencies": {
-        "chai": "1.7.2",
-        "mocha": "1.12.0",
-        "injectr": "0.4.0",
-        "grunt": "0.4.1",
-        "grunt-contrib-jshint": "0.6.0",
-        "grunt-contrib-uglify": "0.2.2",
-        "grunt-mocha-test": "0.6.2",
-        "grunt-gh-pages": "0.6.0",
-        "grunt-jsduck": "0.1.4",
-        "grunt-git-describe": "~2.0.2",
-        "grunt-bumpup": "~0.2.0",
-        "grunt-tagrelease": "~0.2.0"
-    }
+  "version": "0.9.8",
+  "main": "lib/simple.js.validator.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "1.7.2",
+    "mocha": "1.12.0",
+    "injectr": "0.4.0",
+    "grunt": "0.4.1",
+    "grunt-contrib-jshint": "0.6.0",
+    "grunt-contrib-uglify": "0.2.2",
+    "grunt-mocha-test": "0.6.2",
+    "grunt-gh-pages": "0.6.0",
+    "grunt-jsduck": "0.1.4",
+    "grunt-git-describe": "~2.0.2",
+    "grunt-bumpup": "~0.2.0",
+    "grunt-tagrelease": "~0.2.0"
+  }
 }
