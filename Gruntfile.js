@@ -63,7 +63,8 @@ module.exports = function(grunt) {
 
     // Register task(s).
     grunt.registerTask('default', ['jshint','mochaTest','uglify','jsduck','gh-pages']);
-    grunt.registerTask('travisCI', ['jshint','mochaTest']);
+    //grunt.registerTask('travisCI', ['jshint','mochaTest']);
+    grunt.registerTask('travisCI', ['mochaTest']);
     grunt.registerTask('docs', ['jsduck','gh-pages']);
     grunt.registerTask('hint', ['jshint']);
     grunt.registerTask('test', ['mochaTest']);
