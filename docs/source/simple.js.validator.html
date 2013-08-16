@@ -21,7 +21,8 @@
  *
  * @type {SimpleJS.Validator}
  */
-var Validator = module.exports = function() {
+
+(function(exports) {
     &quot;use strict&quot;;
 
 <span id='Validator-method-isEmpty'>    /**
@@ -45,7 +46,7 @@ var Validator = module.exports = function() {
      * @param {Object} value         value to check
      * @returns {boolean}   true if empty; false if not empty
      */
-    var isEmpty = function(value) {
+    var isEmpty = exports.isEmpty = function(value) {
 
         if (typeof value === 'undefined') {
             return true;  // TRUE
@@ -102,7 +103,7 @@ var Validator = module.exports = function() {
      * @param {Object} value         value to check
      * @returns {boolean}   true if not empty; false if empty
      */
-    var isNotEmpty = function(value) {
+    var isNotEmpty = exports.isNotEmpty = function(value) {
         return !isEmpty(value);
     };
 
@@ -127,7 +128,7 @@ var Validator = module.exports = function() {
      * @param {Object} value         value to check
      * @returns {boolean}   true if defined; false if not defined
      */
-    var isDefined = function(value) {
+    var isDefined = exports.isDefined = function(value) {
 
         if (typeof value === 'undefined') {
             return false;
@@ -175,7 +176,7 @@ var Validator = module.exports = function() {
      * @param {Object} value         value to check
      * @returns {boolean}   true if not defined; false if defined
      */
-    var isNotDefined = function(value) {
+    var isNotDefined = exports.isNotDefined = function(value) {
         return !isDefined(value);
     };
 
@@ -186,7 +187,7 @@ var Validator = module.exports = function() {
      * @param {Object} toAssertObj       The object to assert against
      * @returns {void}
      */
-    var assertIsDefined = function(toAssertName, toAssertObj){
+    var assertIsDefined = exports.assertIsDefined = function(toAssertName, toAssertObj){
         if (isNotDefined(toAssertObj)) {
             throw new Error(toAssertName + ' is not defined.');
         }
@@ -199,7 +200,7 @@ var Validator = module.exports = function() {
      * @param {Object} toAssertObj       The object to assert against
      * @returns {void}
      */
-    var assertIsNotDefined = function(toAssertName, toAssertObj){
+    var assertIsNotDefined = exports.assertIsNotDefined = function(toAssertName, toAssertObj){
         if (isDefined(toAssertObj)) {
             throw new Error(toAssertName + ' is defined.');
         }
@@ -212,7 +213,7 @@ var Validator = module.exports = function() {
      * @param {Object} toAssertObj       The object to assert against
      * @returns {void}
      */
-    var assertIsNotEmpty = function(toAssertName, toAssertObj){
+    var assertIsNotEmpty = exports.assertIsNotEmpty = function(toAssertName, toAssertObj){
         if (isEmpty(toAssertObj)) {
             throw new Error(toAssertName + ' is empty.');
         }
@@ -225,22 +226,12 @@ var Validator = module.exports = function() {
      * @param {Object} toAssertObj       The object to assert against
      * @returns {void}
      */
-    var assertIsEmpty = function(toAssertName, toAssertObj){
+    var assertIsEmpty = exports.assertIsEmpty = function(toAssertName, toAssertObj){
         if (isNotEmpty(toAssertObj)) {
             throw new Error(toAssertName + ' is not empty.');
         }
     };
 
-    return {
-        isEmpty: isEmpty,
-        isNotEmpty: isNotEmpty,
-        isDefined: isDefined,
-        isNotDefined: isNotDefined,
-        assertIsEmpty: assertIsEmpty,
-        assertIsNotEmpty: assertIsNotEmpty,
-        assertIsDefined: assertIsDefined,
-        assertIsNotDefined: assertIsNotDefined
-    };
-}();</pre>
+})(typeof exports === 'undefined'? this.sjv={}: exports);</pre>
 </body>
 </html>

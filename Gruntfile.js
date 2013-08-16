@@ -4,12 +4,6 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        'git-describe': {
-            options: {
-                prop: 'meta.revision'
-            },
-            me: {}
-        },
         bumpup: 'package.json',
         tagrelease: 'package.json',
         uglify: {
@@ -17,12 +11,12 @@ module.exports = function(grunt) {
                 banner: '/*! <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build: {
-                src: 'lib/validator.js',
-                dest: 'lib/validator.min.js'
+                src: 'lib/simple.js.validator.js',
+                dest: 'lib/simple.js.validator.min.js'
             }
         },
         jshint: {
-            all: ["Gruntfile.js", "lib/validator.js", "test/validator.Unit.Tests.js"]
+            all: ["Gruntfile.js", "lib/simple.js.validator.js", "test/validator.Unit.Tests.js"]
         },
         mochaTest: {
             test: {
@@ -42,7 +36,7 @@ module.exports = function(grunt) {
             main: {
                 // source paths with your code
                 src: [
-                    "lib/validator.js"
+                    "lib/simple.js.validator.js"
                 ],
 
                 // docs output dir
@@ -69,25 +63,22 @@ module.exports = function(grunt) {
 
     // Register task(s).
     grunt.registerTask('default', ['jshint','mochaTest','uglify','jsduck','gh-pages']);
-    grunt.registerTask('travisCI', ['jshint','mochaTest']);
+    //grunt.registerTask('travisCI', ['jshint','mochaTest']);
+    grunt.registerTask('travisCI', ['mochaTest']);
     grunt.registerTask('docs', ['jsduck','gh-pages']);
     grunt.registerTask('hint', ['jshint']);
     grunt.registerTask('test', ['mochaTest']);
     grunt.registerTask('ghPages', ['gh-pages']);
     grunt.registerTask('jsDuck', ['jsduck']);
     grunt.registerTask('min', ['uglify']);
+    grunt.registerTask('min', ['uglify']);
 
-    grunt.registerTask('tag-revision', 'Tag the current build revision', function () {
-        grunt.task.requires('git-describe');
-
-        grunt.file.write('version.json', JSON.stringify({
-            version: grunt.config('pkg.version'),
-            revision: grunt.config('meta.revision'),
-            date: grunt.template.today()
-        }));
+    // Release alias task
+    grunt.registerTask('bump', function (type) {
+        type = type ? type : 'patch';
+        grunt.task.run('bumpup:' + type); // Bump up the package version
+        // still need to push the commit up
     });
-
-    grunt.registerTask('version', ['git-describe', 'tag-revision']);
 
     // Release alias task
     grunt.registerTask('release', function (type) {
@@ -98,7 +89,8 @@ module.exports = function(grunt) {
         grunt.task.run('jsduck');
         grunt.task.run('gh-pages');
         grunt.task.run('bumpup:' + type); // Bump up the package version
-        grunt.task.run('tagrelease');     // Commit & tag the changes from above
+        grunt.task.run('tagrelease');
+                                          // still need to push the commit up
     });
 
 };
