@@ -1,11 +1,11 @@
 {
-  "name": "simpleJSValidator",
+  "name": "simple-js-validator",
   "description": "Perform simple javascript validation like isEmpty and isDefined in a consistent manner.",
   "author": "Dan Hunt <dkhunt27@gmail.com>",
-  "homepage": "https://github.com/dkhunt27/simpleJSValidator",
+  "homepage": "https://github.com/dkhunt27/simple-js-validator",
   "repository": {
     "type": "git",
-    "url": "https://dkhunt27@github.com/dkhunt27/simpleJSValidator.git"
+    "url": "https://dkhunt27@github.com/dkhunt27/simple-js-validator.git"
   },
   "licenses": [
     {
@@ -13,6 +13,13 @@
       "url": "https://github.com/dkhunt27/simpleJSValidator/raw/master/LICENSE"
     }
   ],
+  "keywords": [
+        "javascript validation",
+        "isempty",
+        "is empty",
+        "isdefined",
+        "is defined"
+    ],
   "version": "0.9.8",
   "main": "lib/simple.js.validator.js",
   "dependencies": {},
