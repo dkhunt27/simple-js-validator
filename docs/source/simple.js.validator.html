@@ -1,14 +1,32 @@
-/**
- * @class Validator
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='Validator'>/**
+</span> * @class Validator
  * A collection of simple validations for common actions
  *
  * @type {SimpleJS.Validator}
  */
-var Validator = module.exports = function() {
-    "use strict";
 
-    /**
-     * Returns ***true*** if the value is empty; otherwise, returns ***false***.
+(function(exports) {
+    &quot;use strict&quot;;
+
+<span id='Validator-method-isEmpty'>    /**
+</span>     * Returns ***true*** if the value is empty; otherwise, returns ***false***.
      *
      * Returns ***true*** for the following:
      *
@@ -28,13 +46,13 @@ var Validator = module.exports = function() {
      * @param {Object} value         value to check
      * @returns {boolean}   true if empty; false if not empty
      */
-    var isEmpty = function(value) {
+    var isEmpty = exports.isEmpty = function(value) {
 
         if (typeof value === 'undefined') {
             return true;  // TRUE
         } else if (value === null) {
             return true;  // TRUE
-        } else if (typeof value === 'number' && isNaN(value)) {
+        } else if (typeof value === 'number' &amp;&amp; isNaN(value)) {
             // NaN value check
             // ...and yes you need to check that it is a number before checking that it is NotANumber.  Who knew?
             return true;  // TRUE
@@ -44,19 +62,19 @@ var Validator = module.exports = function() {
             return false;
         } else if (value === false) {
             return false;
-        } else if (typeof value === 'object' && Object.prototype.toString.call(value) === "[object Date]") {
+        } else if (typeof value === 'object' &amp;&amp; Object.prototype.toString.call(value) === &quot;[object Date]&quot;) {
             // new Date() is an object, but it has no keys/props so it will fail the next check
             // so if it is a date, it is considered populated
             // ...could use _.isDate, but trying to reduce the dependency on external libs
             return false;
-        } else if (typeof value === 'object' && Object.keys(value).length === 0) {
+        } else if (typeof value === 'object' &amp;&amp; Object.keys(value).length === 0) {
             // empty object check
             // this did not pass the new Date() check by itself, so added the date check above
             // also the for loop with the hasOwnProperty did not pass the new Date() either
             // also the _.isEmpty did not pass the new Date() check
             return true; // TRUE
 
-        } else if (typeof value === 'object' && typeof value.length !== 'undefined' && value.length === 0) {
+        } else if (typeof value === 'object' &amp;&amp; typeof value.length !== 'undefined' &amp;&amp; value.length === 0) {
             // empty array check
             return true; // TRUE
         } else {
@@ -64,8 +82,8 @@ var Validator = module.exports = function() {
         }
     };
 
-    /**
-     * Returns ***true*** if the value is not empty; otherwise, returns ***false***.
+<span id='Validator-method-isNotEmpty'>    /**
+</span>     * Returns ***true*** if the value is not empty; otherwise, returns ***false***.
      *
      * Returns ***false*** for the following:
      *
@@ -85,12 +103,12 @@ var Validator = module.exports = function() {
      * @param {Object} value         value to check
      * @returns {boolean}   true if not empty; false if empty
      */
-    var isNotEmpty = function(value) {
+    var isNotEmpty = exports.isNotEmpty = function(value) {
         return !isEmpty(value);
     };
 
-    /**
-     * Returns ***true*** if the value is defined; otherwise, returns ***false***.
+<span id='Validator-method-isDefined'>    /**
+</span>     * Returns ***true*** if the value is defined; otherwise, returns ***false***.
      *
      * Returns ***false*** for the following:
      *
@@ -110,13 +128,13 @@ var Validator = module.exports = function() {
      * @param {Object} value         value to check
      * @returns {boolean}   true if defined; false if not defined
      */
-    var isDefined = function(value) {
+    var isDefined = exports.isDefined = function(value) {
 
         if (typeof value === 'undefined') {
             return false;
         } else if (value === null) {
             return false;
-        } else if (typeof value === 'number' && isNaN(value)) {
+        } else if (typeof value === 'number' &amp;&amp; isNaN(value)) {
             // NaN value check
             // ...and yes you need to check that it is a number before checking that it is NotANumber.  Who knew?
             return false;
@@ -126,10 +144,10 @@ var Validator = module.exports = function() {
             return true;  // TRUE
         } else if (value === false) {
             return true;  // TRUE
-        } else if (typeof value === 'object' && Object.keys(value).length === 0) {
+        } else if (typeof value === 'object' &amp;&amp; Object.keys(value).length === 0) {
             // empty object check
             return true; // TRUE
-        } else if (typeof value === 'object' && typeof value.length !== 'undefined' && value.length === 0) {
+        } else if (typeof value === 'object' &amp;&amp; typeof value.length !== 'undefined' &amp;&amp; value.length === 0) {
             // empty array check
             return true; // TRUE
         } else {
@@ -137,8 +155,8 @@ var Validator = module.exports = function() {
         }
     };
 
-    /**
-     * Returns ***true*** if the value is not defined; otherwise, returns ***false***.
+<span id='Validator-method-isNotDefined'>    /**
+</span>     * Returns ***true*** if the value is not defined; otherwise, returns ***false***.
      *
      * Returns ***true*** for the following:
      *
@@ -158,70 +176,62 @@ var Validator = module.exports = function() {
      * @param {Object} value         value to check
      * @returns {boolean}   true if not defined; false if defined
      */
-    var isNotDefined = function(value) {
+    var isNotDefined = exports.isNotDefined = function(value) {
         return !isDefined(value);
     };
 
-    /**
-     * Throws an error if the object is not defined (see {@link #isNotDefined} method for definition).
+<span id='Validator-method-assertIsDefined'>    /**
+</span>     * Throws an error if the object is not defined (see {@link #isNotDefined} method for definition).
      *
      * @param {String} toAssertName      The name associated with the object.  This name is used when the error is thrown.
      * @param {Object} toAssertObj       The object to assert against
      * @returns {void}
      */
-    var assertIsDefined = function(toAssertName, toAssertObj){
+    var assertIsDefined = exports.assertIsDefined = function(toAssertName, toAssertObj){
         if (isNotDefined(toAssertObj)) {
             throw new Error(toAssertName + ' is not defined.');
         }
     };
 
-    /**
-     * Throws an error if the object is defined (see {@link #isDefined} method for definition).
+<span id='Validator-method-assertIsNotDefined'>    /**
+</span>     * Throws an error if the object is defined (see {@link #isDefined} method for definition).
      *
      * @param {String} toAssertName      The name associated with the object.  This name is used when the error is thrown.
      * @param {Object} toAssertObj       The object to assert against
      * @returns {void}
      */
-    var assertIsNotDefined = function(toAssertName, toAssertObj){
+    var assertIsNotDefined = exports.assertIsNotDefined = function(toAssertName, toAssertObj){
         if (isDefined(toAssertObj)) {
             throw new Error(toAssertName + ' is defined.');
         }
     };
 
-    /**
-     * Throws an error if the object is empty (see {@link #isEmpty} method for definition).
+<span id='Validator-method-assertIsNotEmpty'>    /**
+</span>     * Throws an error if the object is empty (see {@link #isEmpty} method for definition).
      *
      * @param {String} toAssertName      The name associated with the object.  This name is used when the error is thrown.
      * @param {Object} toAssertObj       The object to assert against
      * @returns {void}
      */
-    var assertIsNotEmpty = function(toAssertName, toAssertObj){
+    var assertIsNotEmpty = exports.assertIsNotEmpty = function(toAssertName, toAssertObj){
         if (isEmpty(toAssertObj)) {
             throw new Error(toAssertName + ' is empty.');
         }
     };
 
-    /**
-     * Throws an error if the object is not empty (see {@link #isNotEmpty} method for definition).
+<span id='Validator-method-assertIsEmpty'>    /**
+</span>     * Throws an error if the object is not empty (see {@link #isNotEmpty} method for definition).
      *
      * @param {String} toAssertName      The name associated with the object.  This name is used when the error is thrown.
      * @param {Object} toAssertObj       The object to assert against
      * @returns {void}
      */
-    var assertIsEmpty = function(toAssertName, toAssertObj){
+    var assertIsEmpty = exports.assertIsEmpty = function(toAssertName, toAssertObj){
         if (isNotEmpty(toAssertObj)) {
             throw new Error(toAssertName + ' is not empty.');
         }
     };
 
-    return {
-        isEmpty: isEmpty,
-        isNotEmpty: isNotEmpty,
-        isDefined: isDefined,
-        isNotDefined: isNotDefined,
-        assertIsEmpty: assertIsEmpty,
-        assertIsNotEmpty: assertIsNotEmpty,
-        assertIsDefined: assertIsDefined,
-        assertIsNotDefined: assertIsNotDefined
-    };
-}();
+})(typeof exports === 'undefined'? this.sjv={}: exports);</pre>
+</body>
+</html>

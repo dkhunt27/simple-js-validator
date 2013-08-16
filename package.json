@@ -13,8 +13,8 @@
       "url": "https://github.com/dkhunt27/simpleJSValidator/raw/master/LICENSE"
     }
   ],
-  "version": "0.9.3",
-  "main": "lib/validator.js",
+  "version": "0.9.7",
+  "main": "lib/simple.js.validator.js",
   "dependencies": {},
   "devDependencies": {
     "chai": "1.7.2",

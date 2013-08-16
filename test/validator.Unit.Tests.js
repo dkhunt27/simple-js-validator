@@ -8,8 +8,9 @@ describe('validator.Unit.Tests.js', function(){
     var validator;
     beforeEach(function(){
 
-        var filePath = path.join(path.join(__dirname, '../lib'),'validator.js');
-        validator = injectr(filePath);
+        var filePath = path.join(path.join(__dirname, '../lib'),'simple.js.validator.js');
+       // validator = injectr(filePath);
+        validator = require(filePath);
 
     });
     describe('#isEmpty()', function() {
