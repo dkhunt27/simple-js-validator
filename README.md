@@ -120,9 +120,49 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 	</tr>
 </table>
 
+### Note to myself
+
+- Make sure working in dev branch
+- When updates are complete, run "grunt test" to verify all tests are passing.  Run "grunt hint" to verify all jshint checks are passing.
+- Then run "grunt release".  When it is complete, git commit and git push --tags
+- Make pull request to master
+- Pull down master locally
+- Run "npm publish"
+- Go back to dev branch
+- Cele!!!
 
 # Release History
 <table>
+	<tr>
+		<td>0.9.9</td>
+		<td>2013/08/28</td>
+		<td>Updated isEmpty to handle new Error() correctly.</td>
+	</tr>
+	<tr>
+    <td></td>
+    <td></td>
+    <td>Added isDate, isArray, isObject helper functions.</td>
+  </tr>
+	<tr>
+    <td></td>
+    <td></td>
+    <td>Added functions to ease the checking of functions inputs/objects.</td>
+  </tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>Works in client (browser) and server (Node).</td>
+	</tr>
+  <tr>
+    <td>0.9.8</td>
+    <td>2013/08/15</td>
+    <td>Improved documentation.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>Works in client (browser) and server (Node).</td>
+  </tr>
 	<tr>
 		<td>0.9.7</td>
 		<td>2013/07/30</td>
@@ -162,16 +202,6 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 		<td></td>
 		<td></td>
 		<td>Initial documentation.</td>
-	</tr>
-	<tr>
-		<td>0.9.8</td>
-		<td>2013/08/15</td>
-		<td>Improved documentation.</td>
-	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td>Works in client (browser) and server (Node).</td>
 	</tr>
 </table>
 
