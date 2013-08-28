@@ -1,4 +1,5 @@
-[![Build Status](https://api.travis-ci.org/dkhunt27/simpleJSValidator.png?branch=master)](https://travis-ci.org/dkhunt27/simpleJSValidator)
+[![Build Status-dev](https://api.travis-ci.org/dkhunt27/simpleJSValidator.png?branch=dev)](https://travis-ci.org/dkhunt27/simpleJSValidator)
+[![Build Status-master](https://api.travis-ci.org/dkhunt27/simpleJSValidator.png?branch=master)](https://travis-ci.org/dkhunt27/simpleJSValidator)
 [![NPM version](https://badge.fury.io/js/simpleJSValidator.png)](http://badge.fury.io/js/simpleJSValidator)
 
 simple-js-validator
@@ -124,8 +125,10 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 
 - Make sure working in dev branch
 - When updates are complete, run "grunt test" to verify all tests are passing.  Run "grunt hint" to verify all jshint checks are passing.
-- Then run "grunt release".  When it is complete, git commit and git push --tags
+- Then run "grunt release".  When it is complete, git commit, git push, and git push --tags
+- Wait for travis build confirmation
 - Make pull request to master
+- Wait for travis build confirmation
 - Pull down master locally
 - Run "npm publish"
 - Go back to dev branch
