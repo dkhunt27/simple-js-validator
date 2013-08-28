@@ -14,13 +14,13 @@
     }
   ],
   "keywords": [
-        "javascript validation",
-        "isempty",
-        "is empty",
-        "isdefined",
-        "is defined"
-    ],
-  "version": "0.9.8",
+    "javascript validation",
+    "isempty",
+    "is empty",
+    "isdefined",
+    "is defined"
+  ],
+  "version": "0.9.9",
   "main": "lib/simple.js.validator.js",
   "dependencies": {},
   "devDependencies": {

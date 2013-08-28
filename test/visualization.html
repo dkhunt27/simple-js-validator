@@ -70,6 +70,7 @@
             var objectValue = {"some":"thing"};
             var arrayValue = ["some","thing"];
             var dateValue = new Date();
+            var errorValue = new Date("some error");
 
 
             // build values
@@ -92,6 +93,7 @@
             truthyTest["objectValue"] = (objectValue) ? true : false;
             truthyTest["arrayValue"] = (arrayValue) ? true : false;
             truthyTest["dateValue"] = (dateValue) ? true : false;
+            truthyTest["errorValue"] = (errorValue) ? true : false;
 
             var typeOfUndefinedTest = {}
 
@@ -112,6 +114,7 @@
             typeOfUndefinedTest["objectValue"] = (typeof objectValue === "undefined") ? true : false;
             typeOfUndefinedTest["arrayValue"] = (typeof arrayValue === "undefined") ? true : false;
             typeOfUndefinedTest["dateValue"] = (typeof dateValue === "undefined") ? true : false;
+            typeOfUndefinedTest["errorValue"] = (typeof errorValue === "undefined") ? true : false;
 
 
             // build values
@@ -135,6 +138,7 @@
             isEmptyTest["objectValue"] = sjv[functionName](objectValue) ? true : false;
             isEmptyTest["arrayValue"] = sjv[functionName](arrayValue) ? true : false;
             isEmptyTest["dateValue"] = sjv[functionName](dateValue) ? true : false;
+            isEmptyTest["errorValue"] = sjv[functionName](errorValue) ? true : false;
 
             var isNotEmptyTest = {}
             var functionName = "isNotEmpty";
@@ -156,6 +160,7 @@
             isNotEmptyTest["objectValue"] = sjv[functionName](objectValue) ? true : false;
             isNotEmptyTest["arrayValue"] = sjv[functionName](arrayValue) ? true : false;
             isNotEmptyTest["dateValue"] = sjv[functionName](dateValue) ? true : false;
+            isNotEmptyTest["errorValue"] = sjv[functionName](errorValue) ? true : false;
 
 
             // build values
@@ -179,6 +184,7 @@
             isDefinedTest["objectValue"] = sjv[functionName](objectValue) ? true : false;
             isDefinedTest["arrayValue"] = sjv[functionName](arrayValue) ? true : false;
             isDefinedTest["dateValue"] = sjv[functionName](dateValue) ? true : false;
+            isDefinedTest["errorValue"] = sjv[functionName](errorValue) ? true : false;
 
             var isNotDefinedTest = {}
             functionName = "isNotDefined";
@@ -200,6 +206,7 @@
             isNotDefinedTest["objectValue"] = sjv[functionName](objectValue) ? true : false;
             isNotDefinedTest["arrayValue"] = sjv[functionName](arrayValue) ? true : false;
             isNotDefinedTest["dateValue"] = sjv[functionName](dateValue) ? true : false;
+            isNotDefinedTest["errorValue"] = sjv[functionName](errorValue) ? true : false;
 
 
             var testKey, testResult, testPlaceholder, row, cell, cellText;
