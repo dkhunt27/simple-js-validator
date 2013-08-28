@@ -1,6 +1,6 @@
-[![Build Status-dev](https://api.travis-ci.org/dkhunt27/simpleJSValidator.png?branch=dev)](https://travis-ci.org/dkhunt27/simpleJSValidator)
-[![Build Status-master](https://api.travis-ci.org/dkhunt27/simpleJSValidator.png?branch=master)](https://travis-ci.org/dkhunt27/simpleJSValidator)
-[![NPM version](https://badge.fury.io/js/simpleJSValidator.png)](http://badge.fury.io/js/simpleJSValidator)
+[![Build Status-dev](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=dev)](https://travis-ci.org/dkhunt27/simple-js-validator)
+[![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator)
+[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)
 
 simple-js-validator
 ===============
