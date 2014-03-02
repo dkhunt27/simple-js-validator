@@ -136,6 +136,11 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 # Release History
 <table>
 	<tr>
+		<td>0.9.11</td>
+		<td>2014/03/02</td>
+		<td>Added setPropertyByString.</td>
+	</tr>
+	<tr>
 		<td>0.9.9</td>
 		<td>2013/08/28</td>
 		<td>Updated isEmpty to handle new Error() correctly.</td>
