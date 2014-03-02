@@ -515,6 +515,50 @@
         }
         return obj[props[i]];
     };
+
+    /*
+     * Sets the property based on the string.
+     * So if the obj={foo:{bar:{blah:&quot;here&quot;}}}, setPropertyByString(obj, &quot;foo.bar.blah&quot;, &quot;newHere&quot;) would replace &quot;here&quot; with &quot;newHere&quot;
+     * There cannot be any &quot;.&quot; in any of the property names for this to work correctly
+     * see http://stackoverflow.com/questions/6906108/in-javascript-how-can-i-dynamically-get-a-nested-property-of-an-object
+     *
+     * @param {Object} obj                      object to be search
+     * @param {String} propString               name of the property to find; use &quot;.&quot; to indicate parent/child elements
+     * @param {Object} newValue                 the property value to set
+     */
+    var setPropertyByString =  function(obj, propString, newValue) {
+        if (isEmpty(propString)) {return obj;}
+
+        var prop;
+        var props = propString.split('.');
+
+        var propLength = props.length - 1;
+
+        if (propLength === 0) {
+            obj[propString] = newValue;
+        } else {
+            var lookupObj = obj;
+            for (var i=0; i &lt;= propLength - 1; i++) {
+                prop = props[i];
+
+                if (typeof obj === 'object' &amp;&amp; obj !== null &amp;&amp; prop in obj) {
+                    obj = obj[prop];
+                } else {
+                    break;
+                }
+            }
+
+            // then on last prop in propString
+            prop = props[i];
+            if (typeof obj === 'object' &amp;&amp; obj !== null &amp;&amp; prop in obj) {
+                obj[prop] = newValue;
+            } else {
+                // do not update anything since the prop doesn't exist
+            }
+        }
+        return;
+    };
+
 })(typeof exports === 'undefined'? this.sjv={}: exports);</pre>
 </body>
 </html>
