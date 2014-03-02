@@ -128,6 +128,7 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 - Make pull request to master
 - Wait for travis build confirmation
 - Pull down master locally
+- Just to verify, run "grunt test" to verify all tests are passing.  Run "grunt hint" to verify all jshint checks are passing.
 - Run "npm publish"
 - Go back to dev branch
 - Cele!!!
