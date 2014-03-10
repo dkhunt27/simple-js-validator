@@ -20,7 +20,7 @@
     "isdefined",
     "is defined"
   ],
-  "version": "0.9.11",
+  "version": "0.9.12",
   "main": "lib/simple.js.validator.js",
   "dependencies": {},
   "devDependencies": {
