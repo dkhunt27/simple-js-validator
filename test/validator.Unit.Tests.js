@@ -2,7 +2,6 @@ describe('validator.Unit.Tests.js', function(){
     "use strict";
 
     var path = require('path');
-    var injectr = require('injectr');
     var should = require('chai').should();
     var consoleOutput = true;
 
@@ -10,7 +9,6 @@ describe('validator.Unit.Tests.js', function(){
     beforeEach(function(){
 
         var filePath = path.join(path.join(__dirname, '../lib'),'simple.js.validator.js');
-       // validator = injectr(filePath);
         validator = require(filePath);
 
     });
@@ -879,6 +877,618 @@ describe('validator.Unit.Tests.js', function(){
         });
 
     });
+    describe('#isTrue()', function() {
+        var nothing, nan, value;
+        var functionName = "isTrue";
+        beforeEach(function(){
+            nan = parseInt('NotANumber', 10);
+        });
+        describe('given typeof undefined;', function() {
+            beforeEach(function(){
+                value = nothing;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given null;', function() {
+            beforeEach(function(){
+                value = null;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given NaN;', function() {
+            beforeEach(function(){
+                value = nan;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given empty string;', function() {
+            beforeEach(function(){
+                value = '';
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given an empty object;', function() {
+            beforeEach(function(){
+                value = {};
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given an empty array;', function() {
+            beforeEach(function(){
+                value = [];
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given a string;', function() {
+            beforeEach(function(){
+                value = 'abc';
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given a integer;', function() {
+            beforeEach(function(){
+                value = 123;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given a populated object;', function() {
+            beforeEach(function(){
+                value = {"abc":123};
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given a populated array;', function() {
+            beforeEach(function(){
+                value = [{"abc":123}];
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given a date object;', function() {
+            beforeEach(function(){
+                value = new Date();
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given an error object;', function() {
+            beforeEach(function(){
+                value = new Error("some error");
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given 0;', function() {
+            beforeEach(function(){
+                value = 0;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given false;', function() {
+            beforeEach(function(){
+                value = false;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given "false";', function() {
+            beforeEach(function(){
+                value = "false";
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given "F";', function() {
+            beforeEach(function(){
+                value = "F";
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given 1;', function() {
+            beforeEach(function(){
+                value = 1;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return true', function(){
+                    resultsReturned.should.equal(true);
+                });
+            });
+        });
+
+        describe('given true;', function() {
+            beforeEach(function(){
+                value = true;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return true', function(){
+                    resultsReturned.should.equal(true);
+                });
+            });
+        });
+
+        describe('given "true";', function() {
+            beforeEach(function(){
+                value = "true";
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return true', function(){
+                    resultsReturned.should.equal(true);
+                });
+            });
+        });
+
+        describe('given "T";', function() {
+            beforeEach(function(){
+                value = "T";
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return true', function(){
+                    resultsReturned.should.equal(true);
+                });
+            });
+        });
+    });
+    describe('#isFalse()', function() {
+        var nothing, nan, value;
+        var functionName = "isFalse";
+        beforeEach(function(){
+            nan = parseInt('NotANumber', 10);
+        });
+        describe('given typeof undefined;', function() {
+            beforeEach(function(){
+                value = nothing;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given null;', function() {
+            beforeEach(function(){
+                value = null;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given NaN;', function() {
+            beforeEach(function(){
+                value = nan;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given empty string;', function() {
+            beforeEach(function(){
+                value = '';
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given an empty object;', function() {
+            beforeEach(function(){
+                value = {};
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given an empty array;', function() {
+            beforeEach(function(){
+                value = [];
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given a string;', function() {
+            beforeEach(function(){
+                value = 'abc';
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given a integer;', function() {
+            beforeEach(function(){
+                value = 123;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given a populated object;', function() {
+            beforeEach(function(){
+                value = {"abc":123};
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given a populated array;', function() {
+            beforeEach(function(){
+                value = [{"abc":123}];
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given a date object;', function() {
+            beforeEach(function(){
+                value = new Date();
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given an error object;', function() {
+            beforeEach(function(){
+                value = new Error("some error");
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given 0;', function() {
+            beforeEach(function(){
+                value = 0;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return true', function(){
+                    resultsReturned.should.equal(true);
+                });
+            });
+        });
+
+        describe('given false;', function() {
+            beforeEach(function(){
+                value = false;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return true', function(){
+                    resultsReturned.should.equal(true);
+                });
+            });
+        });
+
+        describe('given "false";', function() {
+            beforeEach(function(){
+                value = "false";
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return true', function(){
+                    resultsReturned.should.equal(true);
+                });
+            });
+        });
+
+        describe('given "F";', function() {
+            beforeEach(function(){
+                value = "F";
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return true', function(){
+                    resultsReturned.should.equal(true);
+                });
+            });
+        });
+
+        describe('given 1;', function() {
+            beforeEach(function(){
+                value = 1;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given true;', function() {
+            beforeEach(function(){
+                value = true;
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given "true";', function() {
+            beforeEach(function(){
+                value = "true";
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+
+        describe('given "T";', function() {
+            beforeEach(function(){
+                value = "T";
+            });
+            describe('when called', function() {
+                var resultsReturned;
+                beforeEach(function(){
+                    resultsReturned = validator[functionName](value);
+                });
+                it('then should return false', function(){
+                    resultsReturned.should.equal(false);
+                });
+            });
+        });
+    });
 
     describe('#validateFunctionInputsAreDefined() and #validateFunctionInputsAreDefinedAsync()', function() {
         var nothing, fnInputs, inputsToValidate, functionName;
@@ -1025,7 +1635,7 @@ describe('validator.Unit.Tests.js', function(){
                 var expErr;
                 beforeEach(function(){
                     inputsToValidate = ["a","b","d","c"];
-                    expErr = functionName + " validateInputsAreDefined[Async] following input must be defined: d";
+                    expErr = functionName + " validateInputsAreDefined[Async] following input must be defined: fnInputs.d";
                 });
                 describe('when sync called', function() {
                     var errCaught, errThrown, resultsReturned, errReturned;
@@ -1213,7 +1823,7 @@ describe('validator.Unit.Tests.js', function(){
                 var expErr;
                 beforeEach(function(){
                     inputsToValidate = ["a","b","d"];
-                    expErr = functionName + " validateInputsAreNotEmpty[Async] following input must not be empty: a";
+                    expErr = functionName + " validateInputsAreNotEmpty[Async] following input must not be empty: fnInputs.a";
                 });
                 describe('when sync called', function() {
                     var errCaught, errThrown, resultsReturned, errReturned;
@@ -1300,7 +1910,7 @@ describe('validator.Unit.Tests.js', function(){
                 var expErr;
                 beforeEach(function(){
                     inputsToValidate = ["b","d","c.f.h"];
-                    expErr = functionName + " validateInputsAreNotEmpty[Async] following input must not be empty: c.f.h";
+                    expErr = functionName + " validateInputsAreNotEmpty[Async] following input must not be empty: fnInputs.c.f.h";
                 });
                 describe('when sync called', function() {
                     var errCaught, errThrown, resultsReturned, errReturned;

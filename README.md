@@ -118,12 +118,14 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 		<td>Update isEmpty, isNotEmpty, isDefined, and isNotDefined functions to use config so user can redefine to their expectations (if different from default).  Essentially the same thing as isAsExpected, but this way they can use the easier to read isEmpty, isNotEmpty, isDefined, and isNotDefined names.</td>
 	</tr>
 </table>
-
+ 
 ### Note to myself
 
 - Make sure working in dev branch
-- When updates are complete, run "grunt test" to verify all tests are passing.  Run "grunt hint" to verify all jshint checks are passing.
-- Then run "grunt release".  When it is complete, git commit, git push, and git push --tags
+- When updates are complete, run "grunt test" to verify all tests are passing.  
+- Run "grunt hint" to verify all jshint checks are passing.
+- Then run "grunt release".  
+- When it is complete, git commit, git push, and git push --tags
 - Wait for travis build confirmation
 - Make pull request to master
 - Wait for travis build confirmation
@@ -135,6 +137,11 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 
 # Release History
 <table>
+	<tr>
+		<td>0.10.1</td>
+		<td>2014/10/02</td>
+		<td>Added isTrue and isFalse. Minor update to improve error message. Updated all dependencies</td>
+	</tr>
 	<tr>
 		<td>0.9.12</td>
 		<td>2014/03/10</td>

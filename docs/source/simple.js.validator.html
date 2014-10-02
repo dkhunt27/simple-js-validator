@@ -176,6 +176,85 @@
         return !isDefined(value);
     };
 
+<span id='Validator-method-isTrue'>    /**
+</span>     * Returns ***true*** if the value is true, &quot;true&quot;, &quot;T&quot;, or 1; otherwise, returns ***false***.
+     *
+     * Returns ***false*** for the following:
+     *
+     *  - typeof undefined
+     *  - null
+     *  - NaN
+     *  - 0
+     *  - false
+     *  - '' (empty string)
+     *  - {} (empty object)
+     *  - [] (empty array)
+     *  - anything else
+     *
+     * Returns ***true*** for the following:
+     *
+     *  - true
+     *  - &quot;true&quot;
+     *  - &quot;T&quot;
+     *  - 1
+     *
+     * @param {Object} value         value to check
+     * @returns {boolean}   true if defined; false if not defined
+     */
+    var isTrue = exports.isTrue = function(value) {
+        if (value === true) {
+            return true;
+        } else if (value === 1) {
+            return true;
+        } else if (value &amp;&amp; typeof value === &quot;string&quot; &amp;&amp; value.toLowerCase() === &quot;true&quot;) {
+            return true;
+        } else if (value &amp;&amp; typeof value === &quot;string&quot; &amp;&amp;  value.toLowerCase() === &quot;t&quot;) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+<span id='Validator-method-isFalse'>    /**
+</span>     * Returns ***true*** if the value is false, &quot;false&quot;, &quot;f&quot;, or 0; otherwise, returns ***false***.
+     *
+     * Returns ***false*** for the following:
+     *
+     *  - typeof undefined
+     *  - null
+     *  - NaN
+     *  - '' (empty string)
+     *  - {} (empty object)
+     *  - [] (empty array)
+     *  - true
+     *  - 1
+     *  - anything else
+     *
+     *  * Returns ***true*** for the following:
+     *
+     *  - false
+     *  - &quot;false&quot;
+     *  - &quot;F&quot;
+     *  - 0
+     *
+     * @param {Object} value         value to check
+     * @returns {boolean}   true if defined; false if not defined
+     */
+    var isFalse = exports.isFalse = function(value) {
+        if (value === false) {
+            return true;
+        } else if (value === 0) {
+            return true;
+        } else if (value &amp;&amp; typeof value === &quot;string&quot; &amp;&amp;  value.toLowerCase() === &quot;false&quot;) {
+            return true;
+        } else if (value &amp;&amp; typeof value === &quot;string&quot; &amp;&amp;  value.toLowerCase() === &quot;f&quot;) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+
 <span id='Validator-method-assertIsDefined'>    /**
 </span>     * Throws an error if the object is not defined (see {@link #isNotDefined} method for definition).
      *
@@ -266,7 +345,7 @@
             var toTest = getPropertyByString(inputs, input);
 
             if (isNotDefined(toTest)) {
-                throw new Error(functionName + 'following input must be defined: ' + input);
+                throw new Error(functionName + 'following input must be defined: ' + inputName + '.' + input);
             }
         }
     };
@@ -347,7 +426,7 @@
             var toTest = getPropertyByString(inputs, input);
 
             if (isEmpty(toTest)) {
-                throw new Error(functionName + 'following input must not be empty: ' + input);
+                throw new Error(functionName + 'following input must not be empty: ' + inputName + '.' + input);
             }
         }
     };
@@ -559,6 +638,7 @@
         return;
     };
 
-})(typeof exports === 'undefined'? this.sjv={}: exports);</pre>
+})(typeof exports === 'undefined'? this.sjv={}: exports);
+</pre>
 </body>
 </html>
