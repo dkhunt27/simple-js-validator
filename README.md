@@ -118,7 +118,7 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 		<td>Update isEmpty, isNotEmpty, isDefined, and isNotDefined functions to use config so user can redefine to their expectations (if different from default).  Essentially the same thing as isAsExpected, but this way they can use the easier to read isEmpty, isNotEmpty, isDefined, and isNotDefined names.</td>
 	</tr>
 </table>
-
+ 
 ### Note to myself
 
 - Make sure working in dev branch
