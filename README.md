@@ -136,6 +136,11 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 # Release History
 <table>
 	<tr>
+		<td>0.10.0</td>
+		<td>2014/10/02</td>
+		<td>Added isTrue and isFalse. Minor update to improve error message. Updated all dependencies</td>
+	</tr>
+	<tr>
 		<td>0.9.12</td>
 		<td>2014/03/10</td>
 		<td>Added setPropertyByString.</td>
