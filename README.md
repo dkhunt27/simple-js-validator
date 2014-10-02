@@ -122,8 +122,10 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 ### Note to myself
 
 - Make sure working in dev branch
-- When updates are complete, run "grunt test" to verify all tests are passing.  Run "grunt hint" to verify all jshint checks are passing.
-- Then run "grunt release".  When it is complete, git commit, git push, and git push --tags
+- When updates are complete, run "grunt test" to verify all tests are passing.  
+- Run "grunt hint" to verify all jshint checks are passing.
+- Then run "grunt release".  
+- When it is complete, git commit, git push, and git push --tags
 - Wait for travis build confirmation
 - Make pull request to master
 - Wait for travis build confirmation
