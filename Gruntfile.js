@@ -82,13 +82,11 @@ module.exports = function(grunt) {
 
     // Release alias task
     grunt.registerTask('release', function (type) {
-        type = type ? type : 'patch';
         grunt.task.run('jshint');
         grunt.task.run('mochaTest');
         grunt.task.run('uglify');
         grunt.task.run('jsduck');
         grunt.task.run('gh-pages');
-        grunt.task.run('bumpup:' + type); // Bump up the package version
         grunt.task.run('tagrelease');
                                           // still need to push the commit up
     });
