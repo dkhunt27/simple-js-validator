@@ -122,10 +122,11 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 ### Note to myself
 
 - Make sure working in dev branch
-- Update package.json version and version ref at top of js file
 - When updates are complete, run "grunt test" to verify all tests are passing.  
 - Run "grunt hint" to verify all jshint checks are passing.
-- Then run "grunt release".  
+- Run "grunt bump" to update version (grunt bump:patch, grunt bump:minor) or update package.json directly
+- Update release history and version ref at top of js file
+- Then run "grunt release".
 - When it is complete, git commit, git push, and git push --tags
 - Wait for travis build confirmation
 - Make pull request to master
@@ -139,7 +140,7 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 # Release History
 <table>
 	<tr>
-		<td>0.11.0</td>
+		<td>0.11.3</td>
 		<td>2015/02/05</td>
 		<td>Added CallbackOnError to the validate methods</td>
 	</tr>
