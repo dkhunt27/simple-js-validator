@@ -1,0 +1,19 @@
+{
+  "name": "simple-js-validator",
+  "description": "Perform simple javascript validation like isEmpty and isDefined in a consistent manner.",
+  "authors": [
+    "Dan Hunt <dkhunt27@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "javascript validation",
+    "isempty",
+    "is empty",
+    "isdefined",
+    "is defined"
+  ],
+  "moduleType": "node",
+  "main": "lib/simple.js.validator.js",
+  "dependencies": {},
+  "devDependencies": {}
+}
