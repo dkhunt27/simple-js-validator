@@ -140,7 +140,7 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 # Release History
 <table>
 	<tr>
-		<td>0.11.4</td>
+		<td>0.11.5</td>
 		<td>2015/12/18</td>
 		<td>Added bower support</td>
 	</tr>
