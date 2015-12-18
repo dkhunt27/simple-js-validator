@@ -1,6 +1,9 @@
 {
   "name": "simple-js-validator",
   "description": "Perform simple javascript validation like isEmpty and isDefined in a consistent manner.",
+  "main": [
+    "lib/simple.js.validator.js"
+  ],
   "authors": [
     "Dan Hunt <dkhunt27@gmail.com>"
   ],
@@ -13,7 +16,15 @@
     "is defined"
   ],
   "moduleType": "node",
-  "main": "lib/simple.js.validator.js",
+  "ignore": [
+    "**/.*",
+    "coverage",
+    "docs",
+    "img",
+    "test",
+    "Gruntfile.js",
+    "jsduck*.json"
+  ],
   "dependencies": {},
   "devDependencies": {}
 }
