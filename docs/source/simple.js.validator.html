@@ -556,7 +556,7 @@
    * @returns {Boolean}                       true if array; otherwise, false
    */
   var isArray = exports.isArray = function(obj) {
-    if (typeof obj === &#39;object&#39; &amp;&amp; typeof obj.length !== &#39;undefined&#39; &amp;&amp; obj.length &gt;= 0) {
+    if (obj &amp;&amp; typeof obj === &#39;object&#39; &amp;&amp; typeof obj.length !== &#39;undefined&#39; &amp;&amp; obj.length &gt;= 0) {
       return true;
     } else {
       return false;
@@ -570,7 +570,21 @@
    * @returns {Boolean}                       true if empty array; otherwise, false
    */
   var isEmptyArray = exports.isEmptyArray = function(obj) {
-    if (typeof obj === &#39;object&#39; &amp;&amp; typeof obj.length !== &#39;undefined&#39; &amp;&amp; obj.length === 0) {
+    if (obj &amp;&amp; typeof obj === &#39;object&#39; &amp;&amp; typeof obj.length !== &#39;undefined&#39; &amp;&amp; obj.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+<span id='Validator-method-isNotEmptyArray'>  /**
+</span>   * Determines if the object is a populated array or not
+   *
+   * @param {Object} obj                      object to be checked
+   * @returns {Boolean}                       true if populated array; otherwise, false
+   */
+  var isNotEmptyArray = exports.isNotEmptyArray = function(obj) {
+    if (obj &amp;&amp; typeof obj === &#39;object&#39; &amp;&amp; typeof obj.length !== &#39;undefined&#39; &amp;&amp; obj.length &gt; 0) {
       return true;
     } else {
       return false;

@@ -1,4 +1,10 @@
-###[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)  MASTER:[![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator) DEV:[![Build Status-dev](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=dev)](https://travis-ci.org/dkhunt27/simple-js-validator)
+[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)
+
+MASTER:[![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator)
+
+DEV:[![Build Status-dev](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=dev)](https://travis-ci.org/dkhunt27/simple-js-validator)
+
+[![Coverage Status](https://coveralls.io/repos/dkhunt27/simple-js-validator/badge.svg)](https://coveralls.io/r/dkhunt27/simple-js-validator)
 
 simple-js-validator
 ===============
@@ -122,7 +128,7 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 ### Note to myself
 
 - Make sure working in dev branch
-- When updates are complete, run "grunt test" to verify all tests are passing.  
+- When updates are complete, run "npm test" or "npm run-script test-travis" to verify all tests are passing without or with test coverage.  
 - Run "grunt hint" to verify all jshint checks are passing.
 - Run "grunt bump" to update version (grunt bump:patch, grunt bump:minor) or update package.json directly
 - Update release history and version ref at top of js file
@@ -139,6 +145,11 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 
 # Release History
 <table>
+	<tr>
+		<td>0.12.0</td>
+		<td>2016/4/1</td>
+		<td>Added more test coverage; wire up coveralls.io</td>
+	</tr>
 	<tr>
 		<td>0.11.5</td>
 		<td>2015/12/18</td>
