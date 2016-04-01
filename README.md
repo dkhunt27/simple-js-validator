@@ -1,4 +1,4 @@
-[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)  [![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator)  [![Coverage Status](https://coveralls.io/repos/github/dkhunt27/simple-js-validator/badge.svg?branch=master)](https://coveralls.io/github/dkhunt27/simple-js-validator?branch=master)
+[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)  [![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator?branch=master)  [![Coverage Status](https://coveralls.io/repos/github/dkhunt27/simple-js-validator/badge.svg?branch=master)](https://coveralls.io/github/dkhunt27/simple-js-validator?branch=master)
 
 simple-js-validator
 ===============
