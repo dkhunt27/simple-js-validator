@@ -131,7 +131,7 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 - When updates are complete, run "npm test" or "npm run-script test-travis" to verify all tests are passing without or with test coverage.  
 - Run "grunt hint" to verify all jshint checks are passing.
 - Run "grunt bump" to update version (grunt bump:patch, grunt bump:minor) or update package.json directly
-- Update release history and version ref at top of js file
+- Update release history and version ref at top of sjv js file
 - Then run "grunt release".
 - When it is complete, git commit, git push, and git push --tags
 - Wait for travis build confirmation
