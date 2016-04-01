@@ -1,4 +1,4 @@
-[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)  [![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator)  [![Coverage Status](https://coveralls.io/repos/dkhunt27/simple-js-validator/badge.svg)](https://coveralls.io/r/dkhunt27/simple-js-validator)
+[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)  [![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator)  [![Coverage Status](https://coveralls.io/repos/github/dkhunt27/simple-js-validator/badge.svg?branch=master)](https://coveralls.io/github/dkhunt27/simple-js-validator?branch=master)
 
 simple-js-validator
 ===============
@@ -151,6 +151,11 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 
 # Release History
 <table>
+	<tr>
+		<td>0.12.2</td>
+		<td>2016/4/1</td>
+		<td>Fixed coverage badge; updated roadmap</td>
+	</tr>
 	<tr>
 		<td>0.12.1</td>
 		<td>2016/4/1</td>
