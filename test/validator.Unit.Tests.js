@@ -515,8 +515,6 @@ describe('validator.Unit.Tests.js', function(){
     givenStringT(functionName, false);
   });
 
-
-
   describe('#isArray()', function() {
     var functionName = "isArray";
     givenTypeofUndefined(functionName, false);
@@ -540,7 +538,29 @@ describe('validator.Unit.Tests.js', function(){
     givenStringTrue(functionName, false);
     givenStringT(functionName, false);
   });
-
+  describe('#isNotArray()', function() {
+    var functionName = "isNotArray";
+    givenTypeofUndefined(functionName, true);
+    givenNull(functionName, true);
+    givenNaN(functionName, true);
+    givenStringEmpty(functionName, true);
+    givenString(functionName, true);
+    givenInteger(functionName, true);
+    givenObjectEmpty(functionName, true);
+    givenObjectPopulated(functionName, true);
+    givenArrayEmpty(functionName, false);
+    givenArrayPopulated(functionName, false);
+    givenObjectDate(functionName, true);
+    givenObjectError(functionName, true);
+    givenInteger0(functionName, true);
+    givenBooleanFalse(functionName, true);
+    givenStringFalse(functionName, true);
+    givenStringF(functionName, true);
+    givenInteger1(functionName, true);
+    givenBooleanTrue(functionName, true);
+    givenStringTrue(functionName, true);
+    givenStringT(functionName, true);
+  });
   describe('#isEmptyArray()', function() {
     var functionName = "isEmptyArray";
     givenTypeofUndefined(functionName, false);
@@ -564,7 +584,6 @@ describe('validator.Unit.Tests.js', function(){
     givenStringTrue(functionName, false);
     givenStringT(functionName, false);
   });
-
   describe('#isNotEmptyArray()', function() {
     var functionName = "isNotEmptyArray";
     givenTypeofUndefined(functionName, false);
@@ -589,8 +608,77 @@ describe('validator.Unit.Tests.js', function(){
     givenStringT(functionName, false);
   });
 
-  describe('#isNotEmptyArray()', function() {
-    var functionName = "isNotEmptyArray";
+  describe('#isObject()', function() {
+    var functionName = "isObject";
+    givenTypeofUndefined(functionName, false);
+    givenNull(functionName, false);
+    givenNaN(functionName, false);
+    givenStringEmpty(functionName, false);
+    givenString(functionName, false);
+    givenInteger(functionName, false);
+    givenObjectEmpty(functionName, true);
+    givenObjectPopulated(functionName, true);
+    givenArrayEmpty(functionName, false);
+    givenArrayPopulated(functionName, false);
+    givenObjectDate(functionName, false);
+    givenObjectError(functionName, false);
+    givenInteger0(functionName, false);
+    givenBooleanFalse(functionName, false);
+    givenStringFalse(functionName, false);
+    givenStringF(functionName, false);
+    givenInteger1(functionName, false);
+    givenBooleanTrue(functionName, false);
+    givenStringTrue(functionName, false);
+    givenStringT(functionName, false);
+  });
+  describe('#isNotObject()', function() {
+    var functionName = "isNotObject";
+    givenTypeofUndefined(functionName, true);
+    givenNull(functionName, true);
+    givenNaN(functionName, true);
+    givenStringEmpty(functionName, true);
+    givenString(functionName, true);
+    givenInteger(functionName, true);
+    givenObjectEmpty(functionName, false);
+    givenObjectPopulated(functionName, false);
+    givenArrayEmpty(functionName, true);
+    givenArrayPopulated(functionName, true);
+    givenObjectDate(functionName, true);
+    givenObjectError(functionName, true);
+    givenInteger0(functionName, true);
+    givenBooleanFalse(functionName, true);
+    givenStringFalse(functionName, true);
+    givenStringF(functionName, true);
+    givenInteger1(functionName, true);
+    givenBooleanTrue(functionName, true);
+    givenStringTrue(functionName, true);
+    givenStringT(functionName, true);
+  });
+  describe('#isEmptyObject()', function() {
+    var functionName = "isEmptyObject";
+    givenTypeofUndefined(functionName, false);
+    givenNull(functionName, false);
+    givenNaN(functionName, false);
+    givenStringEmpty(functionName, false);
+    givenString(functionName, false);
+    givenInteger(functionName, false);
+    givenObjectEmpty(functionName, true);
+    givenObjectPopulated(functionName, false);
+    givenArrayEmpty(functionName, false);
+    givenArrayPopulated(functionName, false);
+    givenObjectDate(functionName, false);
+    givenObjectError(functionName, false);
+    givenInteger0(functionName, false);
+    givenBooleanFalse(functionName, false);
+    givenStringFalse(functionName, false);
+    givenStringF(functionName, false);
+    givenInteger1(functionName, false);
+    givenBooleanTrue(functionName, false);
+    givenStringTrue(functionName, false);
+    givenStringT(functionName, false);
+  });
+  describe('#isNotEmptyObject()', function() {
+    var functionName = "isNotEmptyObject";
     givenTypeofUndefined(functionName, false);
     givenNull(functionName, false);
     givenNaN(functionName, false);
@@ -598,9 +686,9 @@ describe('validator.Unit.Tests.js', function(){
     givenString(functionName, false);
     givenInteger(functionName, false);
     givenObjectEmpty(functionName, false);
-    givenObjectPopulated(functionName, false);
+    givenObjectPopulated(functionName, true);
     givenArrayEmpty(functionName, false);
-    givenArrayPopulated(functionName, true);
+    givenArrayPopulated(functionName, false);
     givenObjectDate(functionName, false);
     givenObjectError(functionName, false);
     givenInteger0(functionName, false);
@@ -613,7 +701,7 @@ describe('validator.Unit.Tests.js', function(){
     givenStringT(functionName, false);
   });
 
-  describe('#validateFunctionInputsAreDefined(), #validateFunctionInputsAreDefinedAsync(), #validateFunctionInputsAreDefinedCallbackOnError()', function() {
+  describe('#validateFunctionInputsAreDefined/Async/CallbackOnError()', function() {
     var nothing, fnInputs, inputsToValidate, functionName;
     var syncFn = "validateFunctionInputsAreDefined";
     var asyncFn = "validateFunctionInputsAreDefinedAsync";
@@ -887,7 +975,7 @@ describe('validator.Unit.Tests.js', function(){
       });
     });
   });
-  describe('#validateFunctionInputsAreNotEmpty(),#validateFunctionInputsAreNotEmptyAsync(),#validateFunctionInputsAreNotEmptyCallbackOnError()', function() {
+  describe('#validateFunctionInputsAreNotEmpty/Async/CallbackOnError()', function() {
     var nothing, fnInputs, inputsToValidate, functionName;
     var syncFn = "validateFunctionInputsAreNotEmpty";
     var asyncFn = "validateFunctionInputsAreNotEmptyAsync";

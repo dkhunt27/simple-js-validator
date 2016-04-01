@@ -1,6 +1,6 @@
 {
   "name": "simple-js-validator",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "Perform simple javascript validation like isEmpty and isDefined in a consistent manner.",
   "author": "Dan Hunt <dkhunt27@gmail.com>",
   "homepage": "https://github.com/dkhunt27/simple-js-validator",
@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha ./test/*.Tests.js",
-    "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/*.Tests.js"
+    "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R list ./test/*.Tests.js"
   },
   "main": "lib/simple.js.validator.js",
   "dependencies": {},
