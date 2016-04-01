@@ -85,6 +85,22 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 		<td>1.0</td>
 		<td>isEmpty, isNotEmpty, isDefined, and isNotDefined functions.</td>
 	</tr>
+    <tr>
+        <td></td>
+        <td>isTrue function that only returns true if "true", true, or 1 and inverse isFalse function</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>isObject, isNotObject, isEmptyObject, and isNotEmptyObject functions</td>
+    </tr>   
+    <tr>
+        <td></td>
+        <td>isArray, isNotArray, isEmptyArray, and isNotEmptyArray functions</td>
+    </tr>   
+    <tr>
+        <td></td>
+        <td>validateFunctionInputs Defined/NotEmpty Sync/Async/CallbackOnError/Promise functions</td>
+    </tr>        
 	<tr>
 		<td></td>
 		<td>Works in client (browser) and server (Node).</td>
@@ -106,15 +122,11 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 		<td>Documentation on installation, use cases, and code examples.</td>
 	</tr>
 	<tr>
-		<td>1.1</td>
-		<td>isTrue function that only returns true if "true", true, or 1 and inverse isFalse function</td>
-	</tr>
-	<tr>
-		<td>1.2</td>
+		<td>2.0</td>
 		<td>isAsExpected where user can define their expected results for each case.</td>
 	</tr>
 	<tr>
-		<td>1.3</td>
+		<td></td>
 		<td>Update isEmpty, isNotEmpty, isDefined, and isNotDefined functions to use config so user can redefine to their expectations (if different from default).  Essentially the same thing as isAsExpected, but this way they can use the easier to read isEmpty, isNotEmpty, isDefined, and isNotDefined names.</td>
 	</tr>
 </table>
