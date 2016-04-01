@@ -16,7 +16,7 @@
 </head>
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js"><span id='Validator'>/**
-</span> * Simple.Js.Validator v0.11.3
+</span> * Simple.Js.Validator v0.12.2
  *
  * @class Validator
  * A collection of simple validations for common actions
@@ -73,7 +73,7 @@
       // new Error() is an object, but it has no keys/props so it will fail the isObject
       // so if it is an error, it is considered populated
       return false;
-    } else if (isObject(value)) {
+    } else if (isEmptyObject(value)) {
       // this did not pass the new Date() check by itself, so added the date check above
       // this did not pass the new Error() check by itself, so added the error check above
       return true;
@@ -556,12 +556,23 @@
    * @returns {Boolean}                       true if array; otherwise, false
    */
   var isArray = exports.isArray = function(obj) {
-    if (typeof obj === &#39;object&#39; &amp;&amp; typeof obj.length !== &#39;undefined&#39; &amp;&amp; obj.length &gt;= 0) {
+    if (obj &amp;&amp; typeof obj === &#39;object&#39; &amp;&amp; typeof obj.length !== &#39;undefined&#39; &amp;&amp; obj.length &gt;= 0) {
       return true;
     } else {
       return false;
     }
   };
+
+<span id='Validator-method-isNotArray'>  /**
+</span>   * Determines if the object is not an array or not
+   *
+   * @param {Object} obj                      object to be checked
+   * @returns {Boolean}                       true if not array; otherwise, false
+   */
+  var isNotArray = exports.isNotArray = function(obj) {
+    return !isArray(obj);
+  };
+
 
 <span id='Validator-method-isEmptyArray'>  /**
 </span>   * Determines if the object is an empty array or not
@@ -570,7 +581,21 @@
    * @returns {Boolean}                       true if empty array; otherwise, false
    */
   var isEmptyArray = exports.isEmptyArray = function(obj) {
-    if (typeof obj === &#39;object&#39; &amp;&amp; typeof obj.length !== &#39;undefined&#39; &amp;&amp; obj.length === 0) {
+    if (isArray(obj) &amp;&amp; typeof obj.length !== &#39;undefined&#39; &amp;&amp; obj.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+<span id='Validator-method-isNotEmptyArray'>  /**
+</span>   * Determines if the object is a populated array or not
+   *
+   * @param {Object} obj                      object to be checked
+   * @returns {Boolean}                       true if populated array; otherwise, false
+   */
+  var isNotEmptyArray = exports.isNotEmptyArray = function(obj) {
+    if (isArray(obj) &amp;&amp; typeof obj.length !== &#39;undefined&#39; &amp;&amp; obj.length &gt; 0) {
       return true;
     } else {
       return false;
@@ -612,6 +637,16 @@
     }
   };
 
+<span id='Validator-method-isNotDate'>  /**
+</span>   * Determines if the object is not a Date or not
+   *
+   * @param {Object} obj                      object to be checked
+   * @returns {Boolean}                       true if not Date; otherwise, false
+   */
+  var isNotDate = exports.isNotDate = function(obj) {
+    return !isDate(obj);
+  };
+
 <span id='Validator-method-isError'>  /**
 </span>   * Determines if the object is an Error or not
    *
@@ -627,6 +662,16 @@
     }
   };
 
+<span id='Validator-method-isNotError'>  /**
+</span>   * Determines if the object is not an Error or not
+   *
+   * @param {Object} obj                      object to be checked
+   * @returns {Boolean}                       true if not Error; otherwise, false
+   */
+  var isNotError = exports.isNotError = function(obj) {
+    return !isError(obj);
+  };
+
 <span id='Validator-method-isObject'>  /**
 </span>   * Determines if the object is an Object or not.  Note returns false on new Date() and new Error().
    *
@@ -637,7 +682,45 @@
     // object check
     // this returns false if obj=new Date()
     // this returns false if obj=new Error()
-    if (typeof obj === &#39;object&#39; &amp;&amp; Object.keys(obj).length === 0) {
+    if (obj &amp;&amp; typeof obj === &#39;object&#39; &amp;&amp; isNotArray(obj) &amp;&amp; isNotDate(obj) &amp;&amp; isNotError(obj)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+<span id='Validator-method-isNotObject'>  /**
+</span>   * Determines if the object is not an Object or not
+   *
+   * @param {Object} obj                      object to be checked
+   * @returns {Boolean}                       true if not Object; otherwise, false
+   */
+  var isNotObject = exports.isNotObject = function(obj) {
+    return !isObject(obj);
+  };
+
+<span id='Validator-method-isEmptyObject'>  /**
+</span>   * Determines if the object is an empty object or not
+   *
+   * @param {Object} obj                      object to be checked
+   * @returns {Boolean}                       true if empty object; otherwise, false
+   */
+  var isEmptyObject = exports.isEmptyObject = function(obj) {
+    if (isObject(obj) &amp;&amp; Object.keys(obj).length === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+<span id='Validator-method-isNotEmptyObject'>  /**
+</span>   * Determines if the object is a populated object or not
+   *
+   * @param {Object} obj                      object to be checked
+   * @returns {Boolean}                       true if populated object; otherwise, false
+   */
+  var isNotEmptyObject = exports.isNotEmptyObject = function(obj) {
+    if (isObject(obj) &amp;&amp; Object.keys(obj).length &gt; 0) {
       return true;
     } else {
       return false;

@@ -1,4 +1,4 @@
-###[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)  MASTER:[![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator) DEV:[![Build Status-dev](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=dev)](https://travis-ci.org/dkhunt27/simple-js-validator)
+[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)  [![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator?branch=master)  [![Coverage Status](https://coveralls.io/repos/github/dkhunt27/simple-js-validator/badge.svg?branch=master)](https://coveralls.io/github/dkhunt27/simple-js-validator?branch=master)
 
 simple-js-validator
 ===============
@@ -85,6 +85,22 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 		<td>1.0</td>
 		<td>isEmpty, isNotEmpty, isDefined, and isNotDefined functions.</td>
 	</tr>
+    <tr>
+        <td></td>
+        <td>isTrue function that only returns true if "true", true, or 1 and inverse isFalse function</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>isObject, isNotObject, isEmptyObject, and isNotEmptyObject functions</td>
+    </tr>   
+    <tr>
+        <td></td>
+        <td>isArray, isNotArray, isEmptyArray, and isNotEmptyArray functions</td>
+    </tr>   
+    <tr>
+        <td></td>
+        <td>validateFunctionInputs Defined/NotEmpty Sync/Async/CallbackOnError/Promise functions</td>
+    </tr>        
 	<tr>
 		<td></td>
 		<td>Works in client (browser) and server (Node).</td>
@@ -106,15 +122,11 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 		<td>Documentation on installation, use cases, and code examples.</td>
 	</tr>
 	<tr>
-		<td>1.1</td>
-		<td>isTrue function that only returns true if "true", true, or 1 and inverse isFalse function</td>
-	</tr>
-	<tr>
-		<td>1.2</td>
+		<td>2.0</td>
 		<td>isAsExpected where user can define their expected results for each case.</td>
 	</tr>
 	<tr>
-		<td>1.3</td>
+		<td></td>
 		<td>Update isEmpty, isNotEmpty, isDefined, and isNotDefined functions to use config so user can redefine to their expectations (if different from default).  Essentially the same thing as isAsExpected, but this way they can use the easier to read isEmpty, isNotEmpty, isDefined, and isNotDefined names.</td>
 	</tr>
 </table>
@@ -122,10 +134,10 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 ### Note to myself
 
 - Make sure working in dev branch
-- When updates are complete, run "grunt test" to verify all tests are passing.  
+- When updates are complete, run "npm test" or "npm run-script test-travis" to verify all tests are passing without or with test coverage.  
 - Run "grunt hint" to verify all jshint checks are passing.
 - Run "grunt bump" to update version (grunt bump:patch, grunt bump:minor) or update package.json directly
-- Update release history and version ref at top of js file
+- Update release history and version ref at top of sjv js file
 - Then run "grunt release".
 - When it is complete, git commit, git push, and git push --tags
 - Wait for travis build confirmation
@@ -139,6 +151,21 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 
 # Release History
 <table>
+	<tr>
+		<td>0.12.2</td>
+		<td>2016/4/1</td>
+		<td>Fixed coverage badge; updated roadmap</td>
+	</tr>
+	<tr>
+		<td>0.12.1</td>
+		<td>2016/4/1</td>
+		<td>Fixed bug in isObject populated object test.  Added isNotObject, isEmptyObject, isNotEmptyObject, isNotArray, isEmptyArray, isNotEmptyArray</td>
+	</tr>
+	<tr>
+		<td>0.12.0</td>
+		<td>2016/4/1</td>
+		<td>Added more test coverage; wire up coveralls.io</td>
+	</tr>
 	<tr>
 		<td>0.11.5</td>
 		<td>2015/12/18</td>
