@@ -152,6 +152,11 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 # Release History
 <table>
 	<tr>
+		<td>0.12.3</td>
+		<td>2018/3/21</td>
+		<td>Fixed bug in setPropertyByString</td>
+	</tr>
+	<tr>
 		<td>0.12.2</td>
 		<td>2016/4/1</td>
 		<td>Fixed coverage badge; updated roadmap</td>

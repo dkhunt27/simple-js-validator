@@ -1,6 +1,6 @@
 {
   "name": "simple-js-validator",
-  "version": "0.12.2",
+  "version": "0.12.3",
   "description": "Perform simple javascript validation like isEmpty and isDefined in a consistent manner.",
   "author": "Dan Hunt <dkhunt27@gmail.com>",
   "homepage": "https://github.com/dkhunt27/simple-js-validator",
