@@ -152,6 +152,11 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 # Release History
 <table>
 	<tr>
+		<td>0.13.0</td>
+		<td>2018/5/7</td>
+		<td>Added assertNestedListIsDefined and assertNestedIsDefined; updated package refs</td>
+	</tr>
+	<tr>
 		<td>0.12.3</td>
 		<td>2018/3/21</td>
 		<td>Fixed bug in setPropertyByString</td>

@@ -85,8 +85,8 @@ module.exports = function(grunt) {
         grunt.task.run('jshint');
         grunt.task.run('mochaTest');
         grunt.task.run('uglify');
-        grunt.task.run('jsduck');
-        grunt.task.run('gh-pages');
+        //grunt.task.run('jsduck');
+        //grunt.task.run('gh-pages');
         grunt.task.run('tagrelease');
                                           // still need to push the commit up
     });
