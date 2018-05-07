@@ -727,7 +727,7 @@ describe('validator.Unit.Tests.js', function(){
           }
         });
         it('then validation should fail', function(){
-          thenReturnErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
+          thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
         });
       });
       describe('when async called', function() {
@@ -796,7 +796,7 @@ describe('validator.Unit.Tests.js', function(){
           });
 
           it('then validation should fail', function(){
-            thenReturnErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
+            thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
           });
         });
         describe('when async called', function() {
@@ -927,7 +927,7 @@ describe('validator.Unit.Tests.js', function(){
           });
 
           it('then validation should fail', function(){
-            thenReturnErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
+            thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
           });
         });
         describe('when async called', function() {
@@ -1002,7 +1002,7 @@ describe('validator.Unit.Tests.js', function(){
         });
 
         it('then validation should fail', function(){
-          thenReturnErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
+          thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
         });
       });
       describe('when async called', function() {
@@ -1071,7 +1071,7 @@ describe('validator.Unit.Tests.js', function(){
           });
 
           it('then validation should fail', function(){
-            thenReturnErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
+            thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
           });
         });
         describe('when async called', function() {
@@ -1202,7 +1202,7 @@ describe('validator.Unit.Tests.js', function(){
           });
 
           it('then validation should fail', function(){
-            thenReturnErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
+            thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
           });
         });
         describe('when async called', function() {
@@ -1333,7 +1333,7 @@ describe('validator.Unit.Tests.js', function(){
           });
 
           it('then validation should fail', function(){
-            thenReturnErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
+            thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, expErr, resultsReturned);
           });
         });
         describe('when async called', function() {
@@ -1382,6 +1382,221 @@ describe('validator.Unit.Tests.js', function(){
     });
   });
 
+  describe('#assertNestedIsDefined()', function() {
+    var obj;
+    beforeEach(function(){
+      obj = {
+        level1: {
+          level2: {
+            level3: "level3"
+          }
+        }
+      };
+    });
+    describe('when called with defined list', function() {
+      var errCaught, errThrown, resultsReturned, errReturned;
+      beforeEach(function(){
+        try {
+          resultsReturned = validator.assertNestedIsDefined(obj, 'objName', 'level1', 'level2', 'level3');
+          errThrown = false;
+        } catch (err) {
+          errThrown = true;
+          errCaught = err;
+        }
+      });
+      it('then validation should pass', function(){
+        thenReturnResultsNoErrorsSync(errThrown, errCaught, errReturned, resultsReturned);
+        resultsReturned.should.equal(true);
+      });
+    });
+    describe('when called with undefined list last', function() {
+      var errCaught, errThrown, resultsReturned, errReturned;
+      beforeEach(function(){
+        try {
+          resultsReturned = validator.assertNestedIsDefined(obj, 'objName', 'level1', 'level2', 'level4');
+          errThrown = false;
+        } catch (err) {
+          errThrown = true;
+          errCaught = err;
+        }
+      });
+      it('then validation should fail', function(){
+        thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, 'objName.level1.level2.level4 is not defined.', resultsReturned);
+      });
+    });
+    describe('when called with undefined list middle', function() {
+      var errCaught, errThrown, resultsReturned, errReturned;
+      beforeEach(function(){
+        try {
+          resultsReturned = validator.assertNestedIsDefined(obj, 'objName', 'level1', 'level4', 'level3');
+          errThrown = false;
+        } catch (err) {
+          errThrown = true;
+          errCaught = err;
+        }
+      });
+      it('then validation should fail', function(){
+        thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, 'objName.level1.level4 is not defined.', resultsReturned);
+      });
+    });
+    describe('when called with undefined list first', function() {
+      var errCaught, errThrown, resultsReturned, errReturned;
+      beforeEach(function(){
+        try {
+          resultsReturned = validator.assertNestedIsDefined(obj, 'objName', 'level4', 'level2', 'level3');
+          errThrown = false;
+        } catch (err) {
+          errThrown = true;
+          errCaught = err;
+        }
+      });
+      it('then validation should fail', function(){
+        thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, 'objName.level4 is not defined.', resultsReturned);
+      });
+    });
+    describe('when called with undefined obj', function() {
+      var errCaught, errThrown, resultsReturned, errReturned;
+      beforeEach(function(){
+        try {
+          resultsReturned = validator.assertNestedIsDefined(null, 'objName', 'level4', 'level2', 'level3');
+          errThrown = false;
+        } catch (err) {
+          errThrown = true;
+          errCaught = err;
+        }
+      });
+      it('then validation should fail', function(){
+        thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, 'objName is not defined.', resultsReturned);
+      });
+    });
+  });
+
+  describe('#assertNestedListIsDefined()', function() {
+    var obj, obj2, obj3;
+    beforeEach(function(){
+      obj = {
+        level11: {
+          level12: {
+            level13: "level3"
+          }
+        }
+      };
+
+      obj2 = {
+        level21: {
+          level22: {
+            level23: "level3"
+          }
+        }
+      };
+
+      obj3 = {
+        level31: {
+          level32: {
+            level33: "level3"
+          }
+        }
+      };
+    });
+    describe('when called with defined list', function() {
+      var errCaught, errThrown, resultsReturned, errReturned;
+      beforeEach(function(){
+        try {
+          resultsReturned = validator.assertNestedListIsDefined([
+            [obj, 'objName', 'level11', 'level12', 'level13'],
+            [obj2, 'obj2Name', 'level21', 'level22', 'level23'],
+            [obj3, 'obj3Name', 'level31', 'level32', 'level33']
+          ]);
+          errThrown = false;
+        } catch (err) {
+          errThrown = true;
+          errCaught = err;
+        }
+      });
+      it('then validation should fail', function(){
+        thenReturnResultsNoErrorsSync(errThrown, errCaught, errReturned, resultsReturned);
+        resultsReturned.should.equal(true);
+      });
+    });
+    describe('when called with undefined list last', function() {
+      var errCaught, errThrown, resultsReturned, errReturned;
+      beforeEach(function(){
+        try {
+          resultsReturned = validator.assertNestedListIsDefined([
+            [obj, 'objName', 'level11', 'level12', 'level13'],
+            [obj2, 'obj2Name', 'level21', 'level22', 'level23'],
+            [obj3, 'obj3Name', 'level31', 'level32', 'level4']
+          ]);
+          errThrown = false;
+        } catch (err) {
+          errThrown = true;
+          errCaught = err;
+        }
+      });
+      it('then validation should fail', function(){
+        thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, 'obj3Name.level31.level32.level4 is not defined.', resultsReturned);
+      });
+    });
+    describe('when called with undefined list middle', function() {
+      var errCaught, errThrown, resultsReturned, errReturned;
+      beforeEach(function(){
+        try {
+          resultsReturned = validator.assertNestedListIsDefined([
+            [obj, 'objName', 'level11', 'level12', 'level13'],
+            [obj2, 'obj2Name', 'level21', 'level4', 'level23'],
+            [obj3, 'obj3Name', 'level31', 'level32', 'level33']
+          ]);
+          errThrown = false;
+        } catch (err) {
+          errThrown = true;
+          errCaught = err;
+        }
+      });
+      it('then validation should fail', function(){
+        thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, 'obj2Name.level21.level4 is not defined.', resultsReturned);
+      });
+    });
+    describe('when called with undefined list first', function() {
+      var errCaught, errThrown, resultsReturned, errReturned;
+      beforeEach(function(){
+        try {
+          resultsReturned = validator.assertNestedListIsDefined([
+            [obj, 'objName', 'level4', 'level12', 'level13'],
+            [obj2, 'obj2Name', 'level21', 'level22', 'level23'],
+            [obj3, 'obj3Name', 'level31', 'level32', 'level33']
+          ]);
+          errThrown = false;
+        } catch (err) {
+          errThrown = true;
+          errCaught = err;
+        }
+      });
+      it('then validation should fail', function(){
+        thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, 'objName.level4 is not defined.', resultsReturned);
+      });
+    });
+    describe('when called with undefined obj', function() {
+      var errCaught, errThrown, resultsReturned, errReturned;
+      beforeEach(function(){
+        try {
+          resultsReturned = validator.assertNestedListIsDefined([
+            [obj, 'objName', 'level11', 'level12', 'level13'],
+            [obj2, 'obj2Name', 'level21', 'level22', 'level23'],
+            [obj3, 'obj3Name', 'level31', 'level32', 'level33'],
+            [null, 'obj4Name', 'level31', 'level32', 'level33']
+          ]);
+          errThrown = false;
+        } catch (err) {
+          errThrown = true;
+          errCaught = err;
+        }
+      });
+      it('then validation should fail', function(){
+        thenCatchErrorNoResultsSync(errThrown, errCaught, errReturned, 'obj4Name is not defined.', resultsReturned);
+      });
+    });
+  });
+
   /**
    * Validates that no error was thrown but the callback returned no results and an error
    *
@@ -1426,7 +1641,7 @@ describe('validator.Unit.Tests.js', function(){
    * @param resultsReturned           The results that were returned
    * @returns {void}
    */
-  var thenReturnErrorNoResultsSync = function(errThrown, errCaught, errReturned, expectedErrMsg, resultsReturned){
+  var thenCatchErrorNoResultsSync = function(errThrown, errCaught, errReturned, expectedErrMsg, resultsReturned){
     if (consoleOutput) {
       //output the error(s) for better debugging purposes
 
@@ -1461,7 +1676,7 @@ describe('validator.Unit.Tests.js', function(){
    * @param resultsReturned           The results that were returned
    * @returns {void}
    */
-  var thenReturnSomeErrorNoResultsSync = function(errThrown, errCaught, errReturned, resultsReturned){
+  var thenCatchSomeErrorNoResultsSync = function(errThrown, errCaught, errReturned, resultsReturned){
     if (consoleOutput) {
       //output the error(s) for better debugging purposes
 
