@@ -514,7 +514,6 @@ describe('validator.Unit.Tests.js', function(){
     givenStringTrue(functionName, false);
     givenStringT(functionName, false);
   });
-
   describe('#isArray()', function() {
     var functionName = "isArray";
     givenTypeofUndefined(functionName, false);
@@ -607,7 +606,6 @@ describe('validator.Unit.Tests.js', function(){
     givenStringTrue(functionName, false);
     givenStringT(functionName, false);
   });
-
   describe('#isObject()', function() {
     var functionName = "isObject";
     givenTypeofUndefined(functionName, false);
@@ -700,7 +698,6 @@ describe('validator.Unit.Tests.js', function(){
     givenStringTrue(functionName, false);
     givenStringT(functionName, false);
   });
-
   describe('#validateFunctionInputsAreDefined/Async/CallbackOnError()', function() {
     var nothing, fnInputs, inputsToValidate, functionName;
     var syncFn = "validateFunctionInputsAreDefined";
