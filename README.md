@@ -152,53 +152,58 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 # Release History
 <table>
 	<tr>
+		<td>1.0.0</td>
+		<td>2020-01-10</td>
+		<td>Added isUniqueObject and isNotUniqueObject; removed isDate, isNotDate, isError, and isNotError; updated package refs</td>
+	</tr>
+	<tr>
 		<td>0.13.0</td>
-		<td>2018/5/7</td>
+		<td>2018-05-07</td>
 		<td>Added assertNestedListIsDefined and assertNestedIsDefined; updated package refs</td>
 	</tr>
 	<tr>
 		<td>0.12.3</td>
-		<td>2018/3/21</td>
+		<td>2018-03-21</td>
 		<td>Fixed bug in setPropertyByString</td>
 	</tr>
 	<tr>
 		<td>0.12.2</td>
-		<td>2016/4/1</td>
+		<td>2016-04-01</td>
 		<td>Fixed coverage badge; updated roadmap</td>
 	</tr>
 	<tr>
 		<td>0.12.1</td>
-		<td>2016/4/1</td>
+		<td>2016-04-01</td>
 		<td>Fixed bug in isObject populated object test.  Added isNotObject, isEmptyObject, isNotEmptyObject, isNotArray, isEmptyArray, isNotEmptyArray</td>
 	</tr>
 	<tr>
 		<td>0.12.0</td>
-		<td>2016/4/1</td>
+		<td>2016-04-01</td>
 		<td>Added more test coverage; wire up coveralls.io</td>
 	</tr>
 	<tr>
 		<td>0.11.5</td>
-		<td>2015/12/18</td>
+		<td>2015-12-18</td>
 		<td>Added bower support</td>
 	</tr>
 	<tr>
 		<td>0.11.3</td>
-		<td>2015/02/05</td>
+		<td>2015-02-05</td>
 		<td>Added CallbackOnError to the validate methods</td>
 	</tr>
 	<tr>
 		<td>0.10.1</td>
-		<td>2014/10/02</td>
+		<td>2014-10-02</td>
 		<td>Added isTrue and isFalse. Minor update to improve error message. Updated all dependencies</td>
 	</tr>
 	<tr>
 		<td>0.9.12</td>
-		<td>2014/03/10</td>
+		<td>2014-03-10</td>
 		<td>Added setPropertyByString.</td>
 	</tr>
 	<tr>
 		<td>0.9.9</td>
-		<td>2013/08/28</td>
+		<td>2013-08-28</td>
 		<td>Updated isEmpty to handle new Error() correctly.</td>
 	</tr>
 	<tr>
