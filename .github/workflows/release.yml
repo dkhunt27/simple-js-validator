@@ -1,4 +1,4 @@
-name: Publish
+name: Release
 
 on:
   push:
@@ -16,19 +16,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Build and Minify
-        run: |
-          yarn install
-          yarn test:coverage
-          yarn lint:prod
-          yarn build
-          yarn minify
-
-      - name: Publish
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
 
       - name: Release
         uses: actions/create-release@v1
