@@ -6,7 +6,7 @@
 
 Perform simple javascript validation like isEmpty and isDefined in a consistent manner.
 
-See [DOCS](http://dkhunt27.github.io/simple-js-validator/index.html)
+See [DOCS](https://dkhunt27.github.io/simple-js-validator/index.html)
 
 ### The trials and tribulations of the truthy test
 
