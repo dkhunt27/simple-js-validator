@@ -1,7 +1,7 @@
 name: On Pull Request
 
 on:
-  pull_request:
+  push:
     branches: [master]
 
 jobs:
@@ -40,7 +40,3 @@ jobs:
       - name: Minify
         run: |
           yarn minify
-
-      - name: Build Docs
-        run: |
-          yarn docs

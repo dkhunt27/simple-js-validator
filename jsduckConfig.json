@@ -1,8 +1,0 @@
-{
-    "--output": "docs",
-    "--warnings": ["-link","-no_doc","-link_ambiguous"],
-    "--categories": "jsduckCategories.json",
-    "--": [
-        "lib/simple.js.validator.js"
-    ]
-}
