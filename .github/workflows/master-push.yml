@@ -62,6 +62,7 @@ jobs:
           BRANCH_NAME="${PATHS[1]}_${PATHS[2]}"
           echo "BRANCH_NAME=$BRANCH_NAME"
           echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
+
       - if: ${{ matrix.node-version == '16.x' }}
         name: Create the Badge
         uses: schneegans/dynamic-badges-action@v1.0.0
@@ -73,3 +74,14 @@ jobs:
           message: ${{ env.COVERAGE }}
           color: green
           namedLogo: jest
+
+      - if: ${{ matrix.node-version == '16.x' }}
+        name: Minify
+        run: |
+          yarn minify
+
+      - if: ${{ matrix.node-version == '16.x' }}
+        name: Publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
