@@ -1,539 +1,533 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title></title>
-  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet">
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-  <script src="../dist/simple.js.validator.js" ></script>
-
-  <style>
-    .text271 {
-      -webkit-transform: rotate(-90deg);
-      -moz-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-      -o-transform: rotate(-90deg);
-      transform: rotate(-90deg);
-      height: 100px;
-      width: 25px;
-      float: left;
-      vertical-align:bottom;
-    }
-
-
-    .table th,
-    .table td {
-      padding: 8px;
-      line-height: 20px;
-      text-align: left;
-      vertical-align: bottom;
-      border-top: 1px solid #dddddd;
-    }
-
-    .headerRow {
-      height: 100px;
-      vertical-align:bottom;
-    }
-
-    .headerCell {
-      height: 100px;
-      vertical-align:bottom;
-    }
-
-    .text270 {
-      -webkit-transform: rotate(-90deg);
-      -moz-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-      -o-transform: rotate(-90deg);
-      transform: rotate(-90deg);
-      height: 20px;
-      width: 10px;
-      float: left;
-      fontWeight: "bold";
-    }
-  </style>
-</head>
-<body>
-<script type="text/javascript">
-  $(function(){
-    var undefinedValue;
-    var nullValue = null;
-    var nanValue = parseInt('NotANumber', 10);
-    var emptyStringValue = "";
-    var zeroValue = 0;
-    var falseValue = false;
-    var emptyObjectValue = {};
-    var emptyArrayValue = [];
-    var stringValue = "something";
-    var integerValue = 12345;
-    var trueValue = true;
-    var objectValue = {"some":"thing"};
-    var arrayValue = ["some","thing"];
-    var dateValue = new Date();
-    var errorValue = new Date("some error");
-
-
-    // build values
-    var truthyTest = {}
-
-    truthyTest["undefinedValue"] = (undefinedValue) ? true : false;
-    truthyTest["nullValue"] = (nullValue) ? true : false;
-    truthyTest["nanValue"] = (nanValue) ? true : false;
-
-    truthyTest["emptyStringValue"] = (emptyStringValue) ? true : false;
-    truthyTest["emptyObjectValue"] = (emptyObjectValue) ? true : false;
-    truthyTest["emptyArrayValue"] = (emptyArrayValue) ? true : false;
-
-    truthyTest["zeroValue"] = (zeroValue) ? true : false;
-    truthyTest["falseValue"] = (falseValue) ? true : false;
-
-    truthyTest["stringValue"] = (stringValue) ? true : false;
-    truthyTest["integerValue"] = (integerValue) ? true : false;
-    truthyTest["trueValue"] = (trueValue) ? true : false;
-    truthyTest["objectValue"] = (objectValue) ? true : false;
-    truthyTest["arrayValue"] = (arrayValue) ? true : false;
-    truthyTest["dateValue"] = (dateValue) ? true : false;
-    truthyTest["errorValue"] = (errorValue) ? true : false;
-
-    var typeOfUndefinedTest = {}
-
-    typeOfUndefinedTest["undefinedValue"] = (typeof undefinedValue === "undefined") ? true : false;
-    typeOfUndefinedTest["nullValue"] = (typeof nullValue === "undefined") ? true : false;
-    typeOfUndefinedTest["nanValue"] = (typeof nanValue === "undefined") ? true : false;
-
-    typeOfUndefinedTest["emptyStringValue"] = (typeof emptyStringValue === "undefined") ? true : false;
-    typeOfUndefinedTest["emptyObjectValue"] = (typeof emptyObjectValue === "undefined") ? true : false;
-    typeOfUndefinedTest["emptyArrayValue"] = (typeof emptyArrayValue === "undefined") ? true : false;
-
-    typeOfUndefinedTest["zeroValue"] = (typeof zeroValue === "undefined") ? true : false;
-    typeOfUndefinedTest["falseValue"] = (typeof falseValue === "undefined") ? true : false;
-
-    typeOfUndefinedTest["stringValue"] = (typeof stringValue === "undefined") ? true : false;
-    typeOfUndefinedTest["integerValue"] = (typeof integerValue === "undefined") ? true : false;
-    typeOfUndefinedTest["trueValue"] = (typeof trueValue === "undefined") ? true : false;
-    typeOfUndefinedTest["objectValue"] = (typeof objectValue === "undefined") ? true : false;
-    typeOfUndefinedTest["arrayValue"] = (typeof arrayValue === "undefined") ? true : false;
-    typeOfUndefinedTest["dateValue"] = (typeof dateValue === "undefined") ? true : false;
-    typeOfUndefinedTest["errorValue"] = (typeof errorValue === "undefined") ? true : false;
-
-
-    // build values
-    var isEmptyTest = {}
-    var functionName = "isEmpty";
-
-    isEmptyTest["undefinedValue"] = sjv[functionName](undefinedValue) ? true : false;
-    isEmptyTest["nullValue"] = sjv[functionName](nullValue) ? true : false;
-    isEmptyTest["nanValue"] = sjv[functionName](nanValue) ? true : false;
-
-    isEmptyTest["emptyStringValue"] = sjv[functionName](emptyStringValue) ? true : false;
-    isEmptyTest["emptyObjectValue"] = sjv[functionName](emptyObjectValue) ? true : false;
-    isEmptyTest["emptyArrayValue"] = sjv[functionName](emptyArrayValue) ? true : false;
-
-    isEmptyTest["zeroValue"] = sjv[functionName](zeroValue) ? true : false;
-    isEmptyTest["falseValue"] = sjv[functionName](falseValue) ? true : false;
-
-    isEmptyTest["stringValue"] = sjv[functionName](stringValue) ? true : false;
-    isEmptyTest["integerValue"] = sjv[functionName](integerValue) ? true : false;
-    isEmptyTest["trueValue"] = sjv[functionName](trueValue) ? true : false;
-    isEmptyTest["objectValue"] = sjv[functionName](objectValue) ? true : false;
-    isEmptyTest["arrayValue"] = sjv[functionName](arrayValue) ? true : false;
-    isEmptyTest["dateValue"] = sjv[functionName](dateValue) ? true : false;
-    isEmptyTest["errorValue"] = sjv[functionName](errorValue) ? true : false;
-
-    var isNotEmptyTest = {}
-    var functionName = "isNotEmpty";
-
-    isNotEmptyTest["undefinedValue"] = sjv[functionName](undefinedValue) ? true : false;
-    isNotEmptyTest["nullValue"] = sjv[functionName](nullValue) ? true : false;
-    isNotEmptyTest["nanValue"] = sjv[functionName](nanValue) ? true : false;
-
-    isNotEmptyTest["emptyStringValue"] = sjv[functionName](emptyStringValue) ? true : false;
-    isNotEmptyTest["emptyObjectValue"] = sjv[functionName](emptyObjectValue) ? true : false;
-    isNotEmptyTest["emptyArrayValue"] = sjv[functionName](emptyArrayValue) ? true : false;
-
-    isNotEmptyTest["zeroValue"] = sjv[functionName](zeroValue) ? true : false;
-    isNotEmptyTest["falseValue"] = sjv[functionName](falseValue) ? true : false;
-
-    isNotEmptyTest["stringValue"] = sjv[functionName](stringValue) ? true : false;
-    isNotEmptyTest["integerValue"] = sjv[functionName](integerValue) ? true : false;
-    isNotEmptyTest["trueValue"] = sjv[functionName](trueValue) ? true : false;
-    isNotEmptyTest["objectValue"] = sjv[functionName](objectValue) ? true : false;
-    isNotEmptyTest["arrayValue"] = sjv[functionName](arrayValue) ? true : false;
-    isNotEmptyTest["dateValue"] = sjv[functionName](dateValue) ? true : false;
-    isNotEmptyTest["errorValue"] = sjv[functionName](errorValue) ? true : false;
-
-
-    // build values
-    var isDefinedTest = {}
-    functionName = "isDefined";
-
-    isDefinedTest["undefinedValue"] = sjv[functionName](undefinedValue) ? true : false;
-    isDefinedTest["nullValue"] = sjv[functionName](nullValue) ? true : false;
-    isDefinedTest["nanValue"] = sjv[functionName](nanValue) ? true : false;
-
-    isDefinedTest["emptyStringValue"] = sjv[functionName](emptyStringValue) ? true : false;
-    isDefinedTest["emptyObjectValue"] = sjv[functionName](emptyObjectValue) ? true : false;
-    isDefinedTest["emptyArrayValue"] = sjv[functionName](emptyArrayValue) ? true : false;
-
-    isDefinedTest["zeroValue"] = sjv[functionName](zeroValue) ? true : false;
-    isDefinedTest["falseValue"] = sjv[functionName](falseValue) ? true : false;
-
-    isDefinedTest["stringValue"] = sjv[functionName](stringValue) ? true : false;
-    isDefinedTest["integerValue"] = sjv[functionName](integerValue) ? true : false;
-    isDefinedTest["trueValue"] = sjv[functionName](trueValue) ? true : false;
-    isDefinedTest["objectValue"] = sjv[functionName](objectValue) ? true : false;
-    isDefinedTest["arrayValue"] = sjv[functionName](arrayValue) ? true : false;
-    isDefinedTest["dateValue"] = sjv[functionName](dateValue) ? true : false;
-    isDefinedTest["errorValue"] = sjv[functionName](errorValue) ? true : false;
-
-    var isNotDefinedTest = {}
-    functionName = "isNotDefined";
-
-    isNotDefinedTest["undefinedValue"] = sjv[functionName](undefinedValue) ? true : false;
-    isNotDefinedTest["nullValue"] = sjv[functionName](nullValue) ? true : false;
-    isNotDefinedTest["nanValue"] = sjv[functionName](nanValue) ? true : false;
-
-    isNotDefinedTest["emptyStringValue"] = sjv[functionName](emptyStringValue) ? true : false;
-    isNotDefinedTest["emptyObjectValue"] = sjv[functionName](emptyObjectValue) ? true : false;
-    isNotDefinedTest["emptyArrayValue"] = sjv[functionName](emptyArrayValue) ? true : false;
-
-    isNotDefinedTest["zeroValue"] = sjv[functionName](zeroValue) ? true : false;
-    isNotDefinedTest["falseValue"] = sjv[functionName](falseValue) ? true : false;
-
-    isNotDefinedTest["stringValue"] = sjv[functionName](stringValue) ? true : false;
-    isNotDefinedTest["integerValue"] = sjv[functionName](integerValue) ? true : false;
-    isNotDefinedTest["trueValue"] = sjv[functionName](trueValue) ? true : false;
-    isNotDefinedTest["objectValue"] = sjv[functionName](objectValue) ? true : false;
-    isNotDefinedTest["arrayValue"] = sjv[functionName](arrayValue) ? true : false;
-    isNotDefinedTest["dateValue"] = sjv[functionName](dateValue) ? true : false;
-    isNotDefinedTest["errorValue"] = sjv[functionName](errorValue) ? true : false;
-
-    var isTrueTest = {}
-    functionName = "isTrue";
-
-    isTrueTest["undefinedValue"] = sjv[functionName](undefinedValue) ? true : false;
-    isTrueTest["nullValue"] = sjv[functionName](nullValue) ? true : false;
-    isTrueTest["nanValue"] = sjv[functionName](nanValue) ? true : false;
-
-    isTrueTest["emptyStringValue"] = sjv[functionName](emptyStringValue) ? true : false;
-    isTrueTest["emptyObjectValue"] = sjv[functionName](emptyObjectValue) ? true : false;
-    isTrueTest["emptyArrayValue"] = sjv[functionName](emptyArrayValue) ? true : false;
-
-    isTrueTest["zeroValue"] = sjv[functionName](zeroValue) ? true : false;
-    isTrueTest["falseValue"] = sjv[functionName](falseValue) ? true : false;
-
-    isTrueTest["stringValue"] = sjv[functionName](stringValue) ? true : false;
-    isTrueTest["integerValue"] = sjv[functionName](integerValue) ? true : false;
-    isTrueTest["trueValue"] = sjv[functionName](trueValue) ? true : false;
-    isTrueTest["objectValue"] = sjv[functionName](objectValue) ? true : false;
-    isTrueTest["arrayValue"] = sjv[functionName](arrayValue) ? true : false;
-    isTrueTest["dateValue"] = sjv[functionName](dateValue) ? true : false;
-    isTrueTest["errorValue"] = sjv[functionName](errorValue) ? true : false;
-
-    var isFalseTest = {}
-    functionName = "isFalse";
-
-    isFalseTest["undefinedValue"] = sjv[functionName](undefinedValue) ? true : false;
-    isFalseTest["nullValue"] = sjv[functionName](nullValue) ? true : false;
-    isFalseTest["nanValue"] = sjv[functionName](nanValue) ? true : false;
-
-    isFalseTest["emptyStringValue"] = sjv[functionName](emptyStringValue) ? true : false;
-    isFalseTest["emptyObjectValue"] = sjv[functionName](emptyObjectValue) ? true : false;
-    isFalseTest["emptyArrayValue"] = sjv[functionName](emptyArrayValue) ? true : false;
-
-    isFalseTest["zeroValue"] = sjv[functionName](zeroValue) ? true : false;
-    isFalseTest["falseValue"] = sjv[functionName](falseValue) ? true : false;
-
-    isFalseTest["stringValue"] = sjv[functionName](stringValue) ? true : false;
-    isFalseTest["integerValue"] = sjv[functionName](integerValue) ? true : false;
-    isFalseTest["trueValue"] = sjv[functionName](trueValue) ? true : false;
-    isFalseTest["objectValue"] = sjv[functionName](objectValue) ? true : false;
-    isFalseTest["arrayValue"] = sjv[functionName](arrayValue) ? true : false;
-    isFalseTest["dateValue"] = sjv[functionName](dateValue) ? true : false;
-    isFalseTest["errorValue"] = sjv[functionName](errorValue) ? true : false;
-
-
-    var testKey, testResult, testPlaceholder, row, cell, cellText;
-
-    var body = document.getElementsByTagName("body")[0];
-
-    var tbl     = document.createElement("table");
-    var tblHead = document.createElement("thead");
-    var tblBody = document.createElement("tbody");
-
-    // create header row
-    row = document.createElement("tr");
-    row.setAttribute("class", "headerRow");
-
-    cell = document.createElement("td");
-    cell.innerHTML = "Javascript Test Performed";
-    //cellText = document.createTextNode("Test Performed");
-    //cell.appendChild(cellText);
-    row.appendChild(cell);
-
-    for (testKey in truthyTest) {
-      testResult = truthyTest[testKey];
-      testPlaceholder = "#truthyTest" + testKey;
-
-      cell = document.createElement("td");
-
-      cellText = document.createElement('span')
-      cellText.innerHTML = testKey.replace('Value','');
-      cellText.setAttribute("class", "text270");
-      cellText.setAttribute("border", "2");
-
-
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
-
-    tblHead.appendChild(row);
-
-    // create typeOfUndefined row
-    row = document.createElement("tr");
-
-    cell = document.createElement("td");
-    cellText = document.createTextNode("typeof === undefined");
-    cell.appendChild(cellText);
-    row.appendChild(cell);
-
-    for (testKey in typeOfUndefinedTest) {
-      testResult = typeOfUndefinedTest[testKey];
-      testPlaceholder = "#truthyTest" + testKey;
-
-      cell = document.createElement("td");
-
-      cellText = document.createElement('span')
-      if (testResult) {
-        cellText.innerHTML = "T";
-        cellText.setAttribute("class", "label label-success");
-      } else {
-        cellText.innerHTML = "F";
-        cellText.setAttribute("class", "label label-important");
+  <head>
+    <title></title>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../dist/simple.js.validator.js"></script>
+
+    <style>
+      .text271 {
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        height: 100px;
+        width: 25px;
+        float: left;
+        vertical-align: bottom;
       }
 
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
-
-    tblBody.appendChild(row);
-
-    // create truthy row
-    row = document.createElement("tr");
-
-    cell = document.createElement("td");
-    cellText = document.createTextNode("() {truthy}");
-    cell.appendChild(cellText);
-    row.appendChild(cell);
-
-    for (testKey in truthyTest) {
-      testResult = truthyTest[testKey];
-      testPlaceholder = "#truthyTest" + testKey;
-
-      cell = document.createElement("td");
-
-      cellText = document.createElement('span')
-      if (testResult) {
-        cellText.innerHTML = "T";
-        cellText.setAttribute("class", "label label-success");
-      } else {
-        cellText.innerHTML = "F";
-        cellText.setAttribute("class", "label label-important");
+      .table th,
+      .table td {
+        padding: 8px;
+        line-height: 20px;
+        text-align: left;
+        vertical-align: bottom;
+        border-top: 1px solid #dddddd;
       }
 
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
-
-    tblBody.appendChild(row);
-
-    // create isNotEmpty row
-    row = document.createElement("tr");
-
-    cell = document.createElement("td");
-    cellText = document.createTextNode("isNotEmpty()");
-    cell.appendChild(cellText);
-    row.appendChild(cell);
-
-    for (testKey in isNotEmptyTest) {
-      testResult = isNotEmptyTest[testKey];
-      testPlaceholder = "#isNotEmptyTest" + testKey;
-
-      cell = document.createElement("td");
-
-      cellText = document.createElement('span')
-      if (testResult) {
-        cellText.innerHTML = "T";
-        cellText.setAttribute("class", "label label-success");
-      } else {
-        cellText.innerHTML = "F";
-        cellText.setAttribute("class", "label label-important");
+      .headerRow {
+        height: 100px;
+        vertical-align: bottom;
       }
 
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
-
-    tblBody.appendChild(row);
-
-    // create isDefined row
-    row = document.createElement("tr");
-
-    cell = document.createElement("td");
-    cellText = document.createTextNode("isDefined()");
-    cell.appendChild(cellText);
-    row.appendChild(cell);
-
-    for (testKey in isDefinedTest) {
-      testResult = isDefinedTest[testKey];
-      testPlaceholder = "#isDefinedTest" + testKey;
-
-      cell = document.createElement("td");
-
-      cellText = document.createElement('span')
-      if (testResult) {
-        cellText.innerHTML = "T";
-        cellText.setAttribute("class", "label label-success");
-      } else {
-        cellText.innerHTML = "F";
-        cellText.setAttribute("class", "label label-important");
+      .headerCell {
+        height: 100px;
+        vertical-align: bottom;
       }
 
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
-
-    tblBody.appendChild(row);
-
-    // create isEmpty row
-    row = document.createElement("tr");
-
-    cell = document.createElement("td");
-    cellText = document.createTextNode("isEmpty()");
-    cell.appendChild(cellText);
-    row.appendChild(cell);
-
-    for (testKey in isEmptyTest) {
-      testResult = isEmptyTest[testKey];
-      testPlaceholder = "#isEmptyTest" + testKey;
-
-      cell = document.createElement("td");
-
-      cellText = document.createElement('span')
-      if (testResult) {
-        cellText.innerHTML = "T";
-        cellText.setAttribute("class", "label label-success");
-      } else {
-        cellText.innerHTML = "F";
-        cellText.setAttribute("class", "label label-important");
+      .text270 {
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        height: 20px;
+        width: 10px;
+        float: left;
+        fontweight: 'bold';
       }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      $(function () {
+        var undefinedValue;
+        var nullValue = null;
+        var nanValue = parseInt('NotANumber', 10);
+        var emptyStringValue = '';
+        var zeroValue = 0;
+        var falseValue = false;
+        var emptyObjectValue = {};
+        var emptyArrayValue = [];
+        var stringValue = 'something';
+        var integerValue = 12345;
+        var trueValue = true;
+        var objectValue = { some: 'thing' };
+        var arrayValue = ['some', 'thing'];
+        var dateValue = new Date();
+        var errorValue = new Date('some error');
 
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
+        // build values
+        var truthyTest = {};
 
-    tblBody.appendChild(row);
+        truthyTest['undefinedValue'] = undefinedValue ? true : false;
+        truthyTest['nullValue'] = nullValue ? true : false;
+        truthyTest['nanValue'] = nanValue ? true : false;
 
-    // create isNotDefined row
-    row = document.createElement("tr");
+        truthyTest['emptyStringValue'] = emptyStringValue ? true : false;
+        truthyTest['emptyObjectValue'] = emptyObjectValue ? true : false;
+        truthyTest['emptyArrayValue'] = emptyArrayValue ? true : false;
 
-    cell = document.createElement("td");
-    cellText = document.createTextNode("isNotDefined()");
-    cell.appendChild(cellText);
-    row.appendChild(cell);
+        truthyTest['zeroValue'] = zeroValue ? true : false;
+        truthyTest['falseValue'] = falseValue ? true : false;
 
-    for (testKey in isNotDefinedTest) {
-      testResult = isNotDefinedTest[testKey];
-      testPlaceholder = "#isNotDefinedTest" + testKey;
+        truthyTest['stringValue'] = stringValue ? true : false;
+        truthyTest['integerValue'] = integerValue ? true : false;
+        truthyTest['trueValue'] = trueValue ? true : false;
+        truthyTest['objectValue'] = objectValue ? true : false;
+        truthyTest['arrayValue'] = arrayValue ? true : false;
+        truthyTest['dateValue'] = dateValue ? true : false;
+        truthyTest['errorValue'] = errorValue ? true : false;
 
-      cell = document.createElement("td");
+        var typeOfUndefinedTest = {};
 
-      cellText = document.createElement('span')
-      if (testResult) {
-        cellText.innerHTML = "T";
-        cellText.setAttribute("class", "label label-success");
-      } else {
-        cellText.innerHTML = "F";
-        cellText.setAttribute("class", "label label-important");
-      }
+        typeOfUndefinedTest['undefinedValue'] = typeof undefinedValue === 'undefined' ? true : false;
+        typeOfUndefinedTest['nullValue'] = typeof nullValue === 'undefined' ? true : false;
+        typeOfUndefinedTest['nanValue'] = typeof nanValue === 'undefined' ? true : false;
 
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
+        typeOfUndefinedTest['emptyStringValue'] = typeof emptyStringValue === 'undefined' ? true : false;
+        typeOfUndefinedTest['emptyObjectValue'] = typeof emptyObjectValue === 'undefined' ? true : false;
+        typeOfUndefinedTest['emptyArrayValue'] = typeof emptyArrayValue === 'undefined' ? true : false;
 
-    tblBody.appendChild(row);
+        typeOfUndefinedTest['zeroValue'] = typeof zeroValue === 'undefined' ? true : false;
+        typeOfUndefinedTest['falseValue'] = typeof falseValue === 'undefined' ? true : false;
 
-    // create isTrue row
-    row = document.createElement("tr");
+        typeOfUndefinedTest['stringValue'] = typeof stringValue === 'undefined' ? true : false;
+        typeOfUndefinedTest['integerValue'] = typeof integerValue === 'undefined' ? true : false;
+        typeOfUndefinedTest['trueValue'] = typeof trueValue === 'undefined' ? true : false;
+        typeOfUndefinedTest['objectValue'] = typeof objectValue === 'undefined' ? true : false;
+        typeOfUndefinedTest['arrayValue'] = typeof arrayValue === 'undefined' ? true : false;
+        typeOfUndefinedTest['dateValue'] = typeof dateValue === 'undefined' ? true : false;
+        typeOfUndefinedTest['errorValue'] = typeof errorValue === 'undefined' ? true : false;
 
-    cell = document.createElement("td");
-    cellText = document.createTextNode("isTrue()");
-    cell.appendChild(cellText);
-    row.appendChild(cell);
+        // build values
+        var isEmptyTest = {};
+        var functionName = 'isEmpty';
 
-    for (testKey in isTrueTest) {
-      testResult = isTrueTest[testKey];
-      testPlaceholder = "#isTrueTest" + testKey;
+        isEmptyTest['undefinedValue'] = sjv[functionName](undefinedValue) ? true : false;
+        isEmptyTest['nullValue'] = sjv[functionName](nullValue) ? true : false;
+        isEmptyTest['nanValue'] = sjv[functionName](nanValue) ? true : false;
 
-      cell = document.createElement("td");
+        isEmptyTest['emptyStringValue'] = sjv[functionName](emptyStringValue) ? true : false;
+        isEmptyTest['emptyObjectValue'] = sjv[functionName](emptyObjectValue) ? true : false;
+        isEmptyTest['emptyArrayValue'] = sjv[functionName](emptyArrayValue) ? true : false;
 
-      cellText = document.createElement('span')
-      if (testResult) {
-        cellText.innerHTML = "T";
-        cellText.setAttribute("class", "label label-success");
-      } else {
-        cellText.innerHTML = "F";
-        cellText.setAttribute("class", "label label-important");
-      }
+        isEmptyTest['zeroValue'] = sjv[functionName](zeroValue) ? true : false;
+        isEmptyTest['falseValue'] = sjv[functionName](falseValue) ? true : false;
 
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
+        isEmptyTest['stringValue'] = sjv[functionName](stringValue) ? true : false;
+        isEmptyTest['integerValue'] = sjv[functionName](integerValue) ? true : false;
+        isEmptyTest['trueValue'] = sjv[functionName](trueValue) ? true : false;
+        isEmptyTest['objectValue'] = sjv[functionName](objectValue) ? true : false;
+        isEmptyTest['arrayValue'] = sjv[functionName](arrayValue) ? true : false;
+        isEmptyTest['dateValue'] = sjv[functionName](dateValue) ? true : false;
+        isEmptyTest['errorValue'] = sjv[functionName](errorValue) ? true : false;
 
-    tblBody.appendChild(row);
+        var isNotEmptyTest = {};
+        var functionName = 'isNotEmpty';
 
-    // create isFalse row
-    row = document.createElement("tr");
+        isNotEmptyTest['undefinedValue'] = sjv[functionName](undefinedValue) ? true : false;
+        isNotEmptyTest['nullValue'] = sjv[functionName](nullValue) ? true : false;
+        isNotEmptyTest['nanValue'] = sjv[functionName](nanValue) ? true : false;
 
-    cell = document.createElement("td");
-    cellText = document.createTextNode("isFalse()");
-    cell.appendChild(cellText);
-    row.appendChild(cell);
+        isNotEmptyTest['emptyStringValue'] = sjv[functionName](emptyStringValue) ? true : false;
+        isNotEmptyTest['emptyObjectValue'] = sjv[functionName](emptyObjectValue) ? true : false;
+        isNotEmptyTest['emptyArrayValue'] = sjv[functionName](emptyArrayValue) ? true : false;
 
-    for (testKey in isFalseTest) {
-      testResult = isFalseTest[testKey];
-      testPlaceholder = "#isFalseTest" + testKey;
+        isNotEmptyTest['zeroValue'] = sjv[functionName](zeroValue) ? true : false;
+        isNotEmptyTest['falseValue'] = sjv[functionName](falseValue) ? true : false;
 
-      cell = document.createElement("td");
+        isNotEmptyTest['stringValue'] = sjv[functionName](stringValue) ? true : false;
+        isNotEmptyTest['integerValue'] = sjv[functionName](integerValue) ? true : false;
+        isNotEmptyTest['trueValue'] = sjv[functionName](trueValue) ? true : false;
+        isNotEmptyTest['objectValue'] = sjv[functionName](objectValue) ? true : false;
+        isNotEmptyTest['arrayValue'] = sjv[functionName](arrayValue) ? true : false;
+        isNotEmptyTest['dateValue'] = sjv[functionName](dateValue) ? true : false;
+        isNotEmptyTest['errorValue'] = sjv[functionName](errorValue) ? true : false;
 
-      cellText = document.createElement('span')
-      if (testResult) {
-        cellText.innerHTML = "T";
-        cellText.setAttribute("class", "label label-success");
-      } else {
-        cellText.innerHTML = "F";
-        cellText.setAttribute("class", "label label-important");
-      }
+        // build values
+        var isDefinedTest = {};
+        functionName = 'isDefined';
 
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
+        isDefinedTest['undefinedValue'] = sjv[functionName](undefinedValue) ? true : false;
+        isDefinedTest['nullValue'] = sjv[functionName](nullValue) ? true : false;
+        isDefinedTest['nanValue'] = sjv[functionName](nanValue) ? true : false;
 
-    tblBody.appendChild(row);
+        isDefinedTest['emptyStringValue'] = sjv[functionName](emptyStringValue) ? true : false;
+        isDefinedTest['emptyObjectValue'] = sjv[functionName](emptyObjectValue) ? true : false;
+        isDefinedTest['emptyArrayValue'] = sjv[functionName](emptyArrayValue) ? true : false;
 
-    tbl.appendChild(tblHead);
-    tbl.appendChild(tblBody);
-    body.appendChild(tbl);
-    tbl.setAttribute("class", "table");
+        isDefinedTest['zeroValue'] = sjv[functionName](zeroValue) ? true : false;
+        isDefinedTest['falseValue'] = sjv[functionName](falseValue) ? true : false;
 
-    // display values
-    for (var testKey in truthyTest) {
-      var testResult = truthyTest[testKey];
-      var testPlaceholder = "#truthyTest" + testKey;
+        isDefinedTest['stringValue'] = sjv[functionName](stringValue) ? true : false;
+        isDefinedTest['integerValue'] = sjv[functionName](integerValue) ? true : false;
+        isDefinedTest['trueValue'] = sjv[functionName](trueValue) ? true : false;
+        isDefinedTest['objectValue'] = sjv[functionName](objectValue) ? true : false;
+        isDefinedTest['arrayValue'] = sjv[functionName](arrayValue) ? true : false;
+        isDefinedTest['dateValue'] = sjv[functionName](dateValue) ? true : false;
+        isDefinedTest['errorValue'] = sjv[functionName](errorValue) ? true : false;
 
-      $(testPlaceholder).val(testResult);
-    }
-  });
-</script>
-</body>
+        var isNotDefinedTest = {};
+        functionName = 'isNotDefined';
+
+        isNotDefinedTest['undefinedValue'] = sjv[functionName](undefinedValue) ? true : false;
+        isNotDefinedTest['nullValue'] = sjv[functionName](nullValue) ? true : false;
+        isNotDefinedTest['nanValue'] = sjv[functionName](nanValue) ? true : false;
+
+        isNotDefinedTest['emptyStringValue'] = sjv[functionName](emptyStringValue) ? true : false;
+        isNotDefinedTest['emptyObjectValue'] = sjv[functionName](emptyObjectValue) ? true : false;
+        isNotDefinedTest['emptyArrayValue'] = sjv[functionName](emptyArrayValue) ? true : false;
+
+        isNotDefinedTest['zeroValue'] = sjv[functionName](zeroValue) ? true : false;
+        isNotDefinedTest['falseValue'] = sjv[functionName](falseValue) ? true : false;
+
+        isNotDefinedTest['stringValue'] = sjv[functionName](stringValue) ? true : false;
+        isNotDefinedTest['integerValue'] = sjv[functionName](integerValue) ? true : false;
+        isNotDefinedTest['trueValue'] = sjv[functionName](trueValue) ? true : false;
+        isNotDefinedTest['objectValue'] = sjv[functionName](objectValue) ? true : false;
+        isNotDefinedTest['arrayValue'] = sjv[functionName](arrayValue) ? true : false;
+        isNotDefinedTest['dateValue'] = sjv[functionName](dateValue) ? true : false;
+        isNotDefinedTest['errorValue'] = sjv[functionName](errorValue) ? true : false;
+
+        var isTrueTest = {};
+        functionName = 'isTrue';
+
+        isTrueTest['undefinedValue'] = sjv[functionName](undefinedValue) ? true : false;
+        isTrueTest['nullValue'] = sjv[functionName](nullValue) ? true : false;
+        isTrueTest['nanValue'] = sjv[functionName](nanValue) ? true : false;
+
+        isTrueTest['emptyStringValue'] = sjv[functionName](emptyStringValue) ? true : false;
+        isTrueTest['emptyObjectValue'] = sjv[functionName](emptyObjectValue) ? true : false;
+        isTrueTest['emptyArrayValue'] = sjv[functionName](emptyArrayValue) ? true : false;
+
+        isTrueTest['zeroValue'] = sjv[functionName](zeroValue) ? true : false;
+        isTrueTest['falseValue'] = sjv[functionName](falseValue) ? true : false;
+
+        isTrueTest['stringValue'] = sjv[functionName](stringValue) ? true : false;
+        isTrueTest['integerValue'] = sjv[functionName](integerValue) ? true : false;
+        isTrueTest['trueValue'] = sjv[functionName](trueValue) ? true : false;
+        isTrueTest['objectValue'] = sjv[functionName](objectValue) ? true : false;
+        isTrueTest['arrayValue'] = sjv[functionName](arrayValue) ? true : false;
+        isTrueTest['dateValue'] = sjv[functionName](dateValue) ? true : false;
+        isTrueTest['errorValue'] = sjv[functionName](errorValue) ? true : false;
+
+        var isFalseTest = {};
+        functionName = 'isFalse';
+
+        isFalseTest['undefinedValue'] = sjv[functionName](undefinedValue) ? true : false;
+        isFalseTest['nullValue'] = sjv[functionName](nullValue) ? true : false;
+        isFalseTest['nanValue'] = sjv[functionName](nanValue) ? true : false;
+
+        isFalseTest['emptyStringValue'] = sjv[functionName](emptyStringValue) ? true : false;
+        isFalseTest['emptyObjectValue'] = sjv[functionName](emptyObjectValue) ? true : false;
+        isFalseTest['emptyArrayValue'] = sjv[functionName](emptyArrayValue) ? true : false;
+
+        isFalseTest['zeroValue'] = sjv[functionName](zeroValue) ? true : false;
+        isFalseTest['falseValue'] = sjv[functionName](falseValue) ? true : false;
+
+        isFalseTest['stringValue'] = sjv[functionName](stringValue) ? true : false;
+        isFalseTest['integerValue'] = sjv[functionName](integerValue) ? true : false;
+        isFalseTest['trueValue'] = sjv[functionName](trueValue) ? true : false;
+        isFalseTest['objectValue'] = sjv[functionName](objectValue) ? true : false;
+        isFalseTest['arrayValue'] = sjv[functionName](arrayValue) ? true : false;
+        isFalseTest['dateValue'] = sjv[functionName](dateValue) ? true : false;
+        isFalseTest['errorValue'] = sjv[functionName](errorValue) ? true : false;
+
+        var testKey, testResult, testPlaceholder, row, cell, cellText;
+
+        var body = document.getElementsByTagName('body')[0];
+
+        var tbl = document.createElement('table');
+        var tblHead = document.createElement('thead');
+        var tblBody = document.createElement('tbody');
+
+        // create header row
+        row = document.createElement('tr');
+        row.setAttribute('class', 'headerRow');
+
+        cell = document.createElement('td');
+        cell.innerHTML = 'Javascript Test Performed';
+        //cellText = document.createTextNode("Test Performed");
+        //cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        for (testKey in truthyTest) {
+          testResult = truthyTest[testKey];
+          testPlaceholder = '#truthyTest' + testKey;
+
+          cell = document.createElement('td');
+
+          cellText = document.createElement('span');
+          cellText.innerHTML = testKey.replace('Value', '');
+          cellText.setAttribute('class', 'text270');
+          cellText.setAttribute('border', '2');
+
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+        }
+
+        tblHead.appendChild(row);
+
+        // create typeOfUndefined row
+        row = document.createElement('tr');
+
+        cell = document.createElement('td');
+        cellText = document.createTextNode('typeof === undefined');
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        for (testKey in typeOfUndefinedTest) {
+          testResult = typeOfUndefinedTest[testKey];
+          testPlaceholder = '#truthyTest' + testKey;
+
+          cell = document.createElement('td');
+
+          cellText = document.createElement('span');
+          if (testResult) {
+            cellText.innerHTML = 'T';
+            cellText.setAttribute('class', 'label label-success');
+          } else {
+            cellText.innerHTML = 'F';
+            cellText.setAttribute('class', 'label label-important');
+          }
+
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+        }
+
+        tblBody.appendChild(row);
+
+        // create truthy row
+        row = document.createElement('tr');
+
+        cell = document.createElement('td');
+        cellText = document.createTextNode('() {truthy}');
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        for (testKey in truthyTest) {
+          testResult = truthyTest[testKey];
+          testPlaceholder = '#truthyTest' + testKey;
+
+          cell = document.createElement('td');
+
+          cellText = document.createElement('span');
+          if (testResult) {
+            cellText.innerHTML = 'T';
+            cellText.setAttribute('class', 'label label-success');
+          } else {
+            cellText.innerHTML = 'F';
+            cellText.setAttribute('class', 'label label-important');
+          }
+
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+        }
+
+        tblBody.appendChild(row);
+
+        // create isNotEmpty row
+        row = document.createElement('tr');
+
+        cell = document.createElement('td');
+        cellText = document.createTextNode('isNotEmpty()');
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        for (testKey in isNotEmptyTest) {
+          testResult = isNotEmptyTest[testKey];
+          testPlaceholder = '#isNotEmptyTest' + testKey;
+
+          cell = document.createElement('td');
+
+          cellText = document.createElement('span');
+          if (testResult) {
+            cellText.innerHTML = 'T';
+            cellText.setAttribute('class', 'label label-success');
+          } else {
+            cellText.innerHTML = 'F';
+            cellText.setAttribute('class', 'label label-important');
+          }
+
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+        }
+
+        tblBody.appendChild(row);
+
+        // create isDefined row
+        row = document.createElement('tr');
+
+        cell = document.createElement('td');
+        cellText = document.createTextNode('isDefined()');
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        for (testKey in isDefinedTest) {
+          testResult = isDefinedTest[testKey];
+          testPlaceholder = '#isDefinedTest' + testKey;
+
+          cell = document.createElement('td');
+
+          cellText = document.createElement('span');
+          if (testResult) {
+            cellText.innerHTML = 'T';
+            cellText.setAttribute('class', 'label label-success');
+          } else {
+            cellText.innerHTML = 'F';
+            cellText.setAttribute('class', 'label label-important');
+          }
+
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+        }
+
+        tblBody.appendChild(row);
+
+        // create isEmpty row
+        row = document.createElement('tr');
+
+        cell = document.createElement('td');
+        cellText = document.createTextNode('isEmpty()');
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        for (testKey in isEmptyTest) {
+          testResult = isEmptyTest[testKey];
+          testPlaceholder = '#isEmptyTest' + testKey;
+
+          cell = document.createElement('td');
+
+          cellText = document.createElement('span');
+          if (testResult) {
+            cellText.innerHTML = 'T';
+            cellText.setAttribute('class', 'label label-success');
+          } else {
+            cellText.innerHTML = 'F';
+            cellText.setAttribute('class', 'label label-important');
+          }
+
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+        }
+
+        tblBody.appendChild(row);
+
+        // create isNotDefined row
+        row = document.createElement('tr');
+
+        cell = document.createElement('td');
+        cellText = document.createTextNode('isNotDefined()');
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        for (testKey in isNotDefinedTest) {
+          testResult = isNotDefinedTest[testKey];
+          testPlaceholder = '#isNotDefinedTest' + testKey;
+
+          cell = document.createElement('td');
+
+          cellText = document.createElement('span');
+          if (testResult) {
+            cellText.innerHTML = 'T';
+            cellText.setAttribute('class', 'label label-success');
+          } else {
+            cellText.innerHTML = 'F';
+            cellText.setAttribute('class', 'label label-important');
+          }
+
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+        }
+
+        tblBody.appendChild(row);
+
+        // create isTrue row
+        row = document.createElement('tr');
+
+        cell = document.createElement('td');
+        cellText = document.createTextNode('isTrue()');
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        for (testKey in isTrueTest) {
+          testResult = isTrueTest[testKey];
+          testPlaceholder = '#isTrueTest' + testKey;
+
+          cell = document.createElement('td');
+
+          cellText = document.createElement('span');
+          if (testResult) {
+            cellText.innerHTML = 'T';
+            cellText.setAttribute('class', 'label label-success');
+          } else {
+            cellText.innerHTML = 'F';
+            cellText.setAttribute('class', 'label label-important');
+          }
+
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+        }
+
+        tblBody.appendChild(row);
+
+        // create isFalse row
+        row = document.createElement('tr');
+
+        cell = document.createElement('td');
+        cellText = document.createTextNode('isFalse()');
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        for (testKey in isFalseTest) {
+          testResult = isFalseTest[testKey];
+          testPlaceholder = '#isFalseTest' + testKey;
+
+          cell = document.createElement('td');
+
+          cellText = document.createElement('span');
+          if (testResult) {
+            cellText.innerHTML = 'T';
+            cellText.setAttribute('class', 'label label-success');
+          } else {
+            cellText.innerHTML = 'F';
+            cellText.setAttribute('class', 'label label-important');
+          }
+
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+        }
+
+        tblBody.appendChild(row);
+
+        tbl.appendChild(tblHead);
+        tbl.appendChild(tblBody);
+        body.appendChild(tbl);
+        tbl.setAttribute('class', 'table');
+
+        // display values
+        for (var testKey in truthyTest) {
+          var testResult = truthyTest[testKey];
+          var testPlaceholder = '#truthyTest' + testKey;
+
+          $(testPlaceholder).val(testResult);
+        }
+      });
+    </script>
+  </body>
 </html>

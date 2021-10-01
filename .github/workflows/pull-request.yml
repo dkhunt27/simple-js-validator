@@ -25,43 +25,44 @@ jobs:
         run: |
           yarn install
 
-      - name: Test
-        run: |
-          yarn test:coverage
+      # - name: Test
+      #   run: |
+      #     yarn test:coverage
 
-      - name: Lint
-        run: |
-          yarn lint:prod
+      # - name: Lint
+      #   run: |
+      #     yarn lint:prod
 
-      - name: Build
-        run: |
-          yarn build
+      # - name: Build
+      #   run: |
+      #     yarn build
 
-      - name: Minify
-        run: |
-          yarn minify
+      # - name: Minify
+      #   run: |
+      #     yarn minify
 
-      - name: Build Docs
-        run: |
-          yarn docs
+      # - name: Build Docs
+      #   run: |
+      #     yarn docs
 
-      - name: Deploy Docs
-        uses: JamesIves/github-pages-deploy-action@4.1.5
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: docs # The folder the action should deploy.
+      # - name: Deploy Docs
+      #   uses: JamesIves/github-pages-deploy-action@4.1.5
+      #   with:
+      #     branch: gh-pages # The branch the action should deploy to.
+      #     folder: docs # The folder the action should deploy.
 
       - if: ${{ matrix.node-version == '14.x' }}
         name: Get Coverage for badge
         run: |
-          COVERAGE=$(yarn test:coverage --coverageReporters="json-summary" && cat .coverage/coverage-summary.json | yarn json total.lines.pct | tail -2 | head -1)
-          echo $COVERAGE
-          echo "COVERAGE=$COVERAGE" >> $GITHUB_ENV
+          yarn test:coverage --coverageReporters="json-summary"
+          COVERAGE=$(cat .coverage/coverage-summary.json | yarn json total.lines.pct | tail -2 | head -1)
+          echo "COVERAGE=$COVERAGE"
+          echo "COVERAGE=$(echo ${COVERAGE})" >> $GITHUB_ENV
           REF=${{ github.ref }}
           echo "github.ref: $REF"
           IFS='/' read -ra PATHS <<< "$REF"
           BRANCH_NAME="${PATHS[1]}_${PATHS[2]}"
-          echo $BRANCH_NAME
+          echo "BRANCH_NAME=$BRANCH_NAME"
           echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
       - if: ${{ matrix.node-version == '14.x' }}
         name: Create the Badge
