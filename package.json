@@ -62,6 +62,6 @@
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
-    "pre-push": "yarn cross-env NODE_ENV=production yarn lint:nofix"
+    "pre-push": "NODE_ENV=production yarn lint:nofix"
   }
 }
