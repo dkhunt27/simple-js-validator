@@ -1,8 +1,12 @@
-[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator) [![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator?branch=master) [![Coverage Status](https://coveralls.io/repos/github/dkhunt27/simple-js-validator/badge.svg?branch=master)](https://coveralls.io/github/dkhunt27/simple-js-validator?branch=master)
+[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)
+[![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator?branch=master)
+[![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/dkhunt27/e35a3788f0a2b9faec15f7869073a515/raw/simple-js-validator__heads_main.json)]
 
 # simple-js-validator
 
 Perform simple javascript validation like isEmpty and isDefined in a consistent manner.
+
+See [DOCS](http://dkhunt27.github.io/simple-js-validator/index.html)
 
 ### The trials and tribulations of the truthy test
 
@@ -14,17 +18,17 @@ In javascript, the typical truthy test is if(someVar) or if(!someVar). In my opi
 
 #### As a "true" test
 
-If using this as a test to see if someVar = true, it works as expected…for the most part. It is a little odd to me that an empty object or array "equals" true. Or any integer (except 0), object, array, date, or string also "equals" true. It might be that eventhough it is a "truthy" test, it is not meant to be "equals" true. That just might be my c# background coming through there.
+If using this as a test to see if someVar = true, it works as expected…for the most part. It is a little odd to me that an empty object or array "equals" true. Or any integer (except 0), object, array, date, or string also "equals" true. It might be that even though it is a "truthy" test, it is not meant to be "equals" true. That just might be my c# background coming through there.
 
 #### As an "existance" test
 
 If using this as a test to see if something "exists", it really doesn't work as expected either. To me a value of false or 0 exist. And whether you think an empty object or an array "exist" or not…Do you consider being empty existing?…it strikes me as odd that an empty object/array returns true, but an empty string returns false. Doesn't seem consistent.
 
-I am sure there are reasons why the test perfroms the way it does and I might be just using it incorrectly, but too many times I have had to go back and debug some if statement because of the above scenarios.
+I am sure there are reasons why the test performs the way it does and I might be just using it incorrectly, but too many times I have had to go back and debug some if statement because of the above scenarios.
 
 ##### typeof === undefined
 
-Furthermore, the typeof undefined test is not how I would expect…or maybe prefer is the better term. Yes, it tells you if it is "undefined", but to me null is not defined. I didn't want to have to perform two checks everytime I want to use an object becuase the following code works fin
+Furthermore, the typeof undefined test is not how I would expect…or maybe prefer is the better term. Yes, it tells you if it is "undefined", but to me null is not defined. I didn't want to have to perform two checks every time I want to use an object because the following code works fin
 
     //THIS WORKS                         	|	//THIS FAILS
     var someVar;                         	|	var someVar = null;
@@ -36,7 +40,7 @@ And if you expected to have a number and you got NaN…then technically that is 
 
 #### simple javascript validators
 
-From the above scenarios, I created several simple functions that will output exactly what I expect them to. I decided to break apart the "existance" test into isDefined (meaning empty things are defined) and isEmpty (meaning it must contain something).
+From the above scenarios, I created several simple functions that will output exactly what I expect them to. I decided to break apart the "existence" test into isDefined (meaning empty things are defined) and isEmpty (meaning it must contain something).
 
 In a future version, I will also add a isTrue which will only return true if the value is "true", 1, or true and an isFalse which will only return true if the value is "false", 0, or false
 
@@ -178,7 +182,7 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 	<tr>
 		<td>0.12.2</td>
 		<td>2016-04-01</td>
-		<td>Fixed coverage badge; updated roadmap</td>
+		<td>Fixed coverage badge; updated road map</td>
 	</tr>
 	<tr>
 		<td>0.12.1</td>
