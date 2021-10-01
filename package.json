@@ -1,6 +1,6 @@
 {
   "name": "simple-js-validator",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Perform simple javascript validation like isEmpty and isDefined in a consistent manner.",
   "author": "Dan Hunt <dkhunt27@gmail.com>",
   "homepage": "https://github.com/dkhunt27/simple-js-validator",
@@ -34,7 +34,7 @@
     "test:watch": "yarn jest --watch --testMatch='**/tests/**/?(*.)+(test).(ts)'",
     "test": "yarn jest --testMatch='**/tests/**/?(*.)+(test).(ts)'"
   },
-  "main": "dist/simple.js.validator.js",
+  "main": "dist/lib/simple.js.validator.js",
   "files": [
     "dist/*",
     "package.json",
