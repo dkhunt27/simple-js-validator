@@ -16,15 +16,25 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            all: ["Gruntfile.js", "lib/simple.js.validator.js", "test/validator.Unit.Tests.js"]
+            all: ["Gruntfile.js", "lib/simple.js.validator.ts", "tests/validator.test.ts"]
         },
-        mochaTest: {
-            test: {
-                options: {
-                    reporter: "tap"
-                },
-                src: ["test/**/*.js"]
-            }
+        run: {
+            test_coverage: {
+              cmd: 'npm',
+              args: [
+                'run',
+                'test:coverage',
+                '--silent'
+              ]
+            },
+            lint_nofix: {
+                cmd: 'npm',
+                args: [
+                  'run',
+                  'lint:nofix',
+                  '--silent'
+                ]
+              }
         },
         'gh-pages': {
             options: {
@@ -54,7 +64,7 @@ module.exports = function(grunt) {
     // Load the plugins
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-run');
     grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-jsduck');
     grunt.loadNpmTasks('grunt-git-describe');
@@ -62,12 +72,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-tagrelease');
 
     // Register task(s).
-    grunt.registerTask('default', ['jshint','mochaTest','uglify','jsduck','gh-pages']);
-    //grunt.registerTask('travisCI', ['jshint','mochaTest']);
-    grunt.registerTask('travisCI', ['mochaTest']);
+    grunt.registerTask('default', ['run:lint_nofix','run:test_coverage','uglify','jsduck','gh-pages']);
+    //grunt.registerTask('travisCI', ['run:lint_nofix','run:test_coverage']);
+    grunt.registerTask('travisCI', ['run:test_coverage']);
     grunt.registerTask('docs', ['jsduck','gh-pages']);
-    grunt.registerTask('hint', ['jshint']);
-    grunt.registerTask('test', ['mochaTest']);
+    grunt.registerTask('lint', ['run:lint_nofix']);
+    grunt.registerTask('test', ['run:test_coverage']);
     grunt.registerTask('ghPages', ['gh-pages']);
     grunt.registerTask('jsDuck', ['jsduck']);
     grunt.registerTask('min', ['uglify']);
@@ -82,8 +92,8 @@ module.exports = function(grunt) {
 
     // Release alias task
     grunt.registerTask('release', function (type) {
-        grunt.task.run('jshint');
-        grunt.task.run('mochaTest');
+        grunt.task.run('run:lint_nofix');
+        grunt.task.run('run:test_coverage');
         grunt.task.run('uglify');
         //grunt.task.run('jsduck');
         //grunt.task.run('gh-pages');

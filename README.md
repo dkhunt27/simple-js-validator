@@ -134,9 +134,9 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 ### Note to myself
 
 - Make sure working in dev branch
-- When updates are complete, run "npm test" or "npm run-script test-travis" to verify all tests are passing without or with test coverage.  
-- Run "grunt hint" to verify all jshint checks are passing.
-- Run "grunt bump" to update version (grunt bump:patch, grunt bump:minor) or update package.json directly
+- When updates are complete, run `yarn test` or `yarn test:coverage` to verify all tests are passing without or with test coverage.  
+- Run `yarn lint` to verify all lint checks are passing.
+- Run `yarn grunt bump` to update version (grunt bump:patch, grunt bump:minor) or update package.json directly
 - Update release history and version ref at top of sjv js file
 - Then run "grunt release".
 - When it is complete, git commit, git push, and git push --tags
@@ -151,6 +151,11 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 
 # Release History
 <table>
+	<tr>
+		<td>2.0.0</td>
+		<td>2021-10-01</td>
+		<td>Updated to typescript; Removed all validateFunction and validationInput functions; Removed getPropertyByString, setPropertyByString, assertNestedListIsDefined, and assertNestedIsDefined; updated package refs</td>
+	</tr>
 	<tr>
 		<td>1.0.0</td>
 		<td>2020-01-10</td>

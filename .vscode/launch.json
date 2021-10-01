@@ -5,30 +5,28 @@
   "version": "0.2.0",
   "configurations": [
     {
-        "type": "node",
-        "request": "launch",
-        "name": "Mocha All",
-        "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-        "args": [
-            "--timeout",
-            "999999",
-            "--colors",
-            "${workspaceFolder}/test"
-        ],
-        "internalConsoleOptions": "neverOpen"
+      "name": "Debug Jest Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand",
+        "--coverage",
+        "false"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     },
     {
-        "type": "node",
-        "request": "launch",
-        "name": "Mocha Current File",
-        "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-        "args": [
-            "--timeout",
-            "999999",
-            "--colors",
-            "${file}"
-        ],
-        "internalConsoleOptions": "neverOpen"
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Current File",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": ["${fileBasenameNoExtension}"],
+      "internalConsoleOptions": "neverOpen",
+
+      "outFiles": ["${workspaceFolder}/.out/**/*.js"]
     }
   ]
 }
