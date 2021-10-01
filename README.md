@@ -1,6 +1,6 @@
 [![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)
-[![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator?branch=master)
-[![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/dkhunt27/e35a3788f0a2b9faec15f7869073a515/raw/simple-js-validator__heads_main.json)]
+[![Build Status](https://github.com/dkhunt27/simple-js-validator/workflows/OnPushToMaster/badge.svg)](https://github.com/dkhunt27/simple-js-validator/actions)
+[![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/dkhunt27/e35a3788f0a2b9faec15f7869073a515/raw/simple-js-validator__heads_master.json)](https://github.com/dkhunt27/simple-js-validator/actions)
 
 # simple-js-validator
 

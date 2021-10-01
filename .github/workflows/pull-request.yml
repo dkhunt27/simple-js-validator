@@ -1,4 +1,4 @@
-name: On Pull Request
+name: OnPullRequestToMaster
 
 on:
   pull_request:
