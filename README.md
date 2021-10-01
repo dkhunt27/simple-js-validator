@@ -1,39 +1,42 @@
-[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator)  [![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator?branch=master)  [![Coverage Status](https://coveralls.io/repos/github/dkhunt27/simple-js-validator/badge.svg?branch=master)](https://coveralls.io/github/dkhunt27/simple-js-validator?branch=master)
+[![NPM version](https://badge.fury.io/js/simple-js-validator.png)](http://badge.fury.io/js/simple-js-validator) [![Build Status-master](https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master)](https://travis-ci.org/dkhunt27/simple-js-validator?branch=master) [![Coverage Status](https://coveralls.io/repos/github/dkhunt27/simple-js-validator/badge.svg?branch=master)](https://coveralls.io/github/dkhunt27/simple-js-validator?branch=master)
 
-simple-js-validator
-===============
+# simple-js-validator
 
 Perform simple javascript validation like isEmpty and isDefined in a consistent manner.
 
 ### The trials and tribulations of the truthy test
 
-	if (someVar) {
-		// do something
-	}
+    if (someVar) {
+    	// do something
+    }
 
-In javascript, the typical truthy test is if(someVar) or if(!someVar).  In my opinion, this does not always work as expected.  This is probably due to the fact that I use the truthy test to perform two distinct tests.  It is used to check if someVar is true and it is used to check if something "exists".  But I don't think it behaves as one would expect in either case…it's close, but not 100%
+In javascript, the typical truthy test is if(someVar) or if(!someVar). In my opinion, this does not always work as expected. This is probably due to the fact that I use the truthy test to perform two distinct tests. It is used to check if someVar is true and it is used to check if something "exists". But I don't think it behaves as one would expect in either case…it's close, but not 100%
 
 #### As a "true" test
-If using this as a test to see if someVar = true, it works as expected…for the most part.  It is a little odd to me that an empty object or array "equals" true. Or any integer (except 0), object, array, date, or string also "equals" true.  It might be that eventhough it is a "truthy" test, it is not meant to be "equals" true.  That just might be my c# background coming through there.
+
+If using this as a test to see if someVar = true, it works as expected…for the most part. It is a little odd to me that an empty object or array "equals" true. Or any integer (except 0), object, array, date, or string also "equals" true. It might be that eventhough it is a "truthy" test, it is not meant to be "equals" true. That just might be my c# background coming through there.
 
 #### As an "existance" test
-If using this as a test to see if something "exists", it really doesn't work as expected either.  To me a value of false or 0 exist.  And whether you think an empty object or an array "exist" or not…Do you consider being empty existing?…it strikes me as odd that an empty object/array returns true, but an empty string returns false.  Doesn't seem consistent.
+
+If using this as a test to see if something "exists", it really doesn't work as expected either. To me a value of false or 0 exist. And whether you think an empty object or an array "exist" or not…Do you consider being empty existing?…it strikes me as odd that an empty object/array returns true, but an empty string returns false. Doesn't seem consistent.
 
 I am sure there are reasons why the test perfroms the way it does and I might be just using it incorrectly, but too many times I have had to go back and debug some if statement because of the above scenarios.
 
 ##### typeof === undefined
-Furthermore, the typeof undefined test is not how I would expect…or maybe prefer is the better term.  Yes, it tells you if it is "undefined", but to me null is not defined.  I didn't want to have to perform two checks everytime I want to use an object becuase the following code works fin
 
-	//THIS WORKS                         	|	//THIS FAILS
-	var someVar;                         	|	var someVar = null;
-	if (typeof someVar !== undefined) {  	|   if (typeof someVar !== undefined) {
-		someVar.foo = "bar"          		|      someVar.foo = "bar"
-	}                                    	|   }
+Furthermore, the typeof undefined test is not how I would expect…or maybe prefer is the better term. Yes, it tells you if it is "undefined", but to me null is not defined. I didn't want to have to perform two checks everytime I want to use an object becuase the following code works fin
 
-And if you expected to have a number and you got NaN…then technically that is not defined.  Probably just semantics or my OCD programming.
+    //THIS WORKS                         	|	//THIS FAILS
+    var someVar;                         	|	var someVar = null;
+    if (typeof someVar !== undefined) {  	|   if (typeof someVar !== undefined) {
+    	someVar.foo = "bar"          		|      someVar.foo = "bar"
+    }                                    	|   }
+
+And if you expected to have a number and you got NaN…then technically that is not defined. Probably just semantics or my OCD programming.
 
 #### simple javascript validators
-From the above scenarios, I created several simple functions that will output exactly what I expect them to.  I decided to break apart the "existance" test into isDefined (meaning empty things are defined) and isEmpty (meaning it must contain something).  
+
+From the above scenarios, I created several simple functions that will output exactly what I expect them to. I decided to break apart the "existance" test into isDefined (meaning empty things are defined) and isEmpty (meaning it must contain something).
 
 In a future version, I will also add a isTrue which will only return true if the value is "true", 1, or true and an isFalse which will only return true if the value is "false", 0, or false
 
@@ -43,43 +46,43 @@ Here is a simple table to illustrate the differences.
 
 <img src="./img/comparison.png" />
 
-
 Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/SimpleJS.Validator" target="_blank">docs/index.html</a> for more details. If link does not work, just open the index.html in the docs folder.
 
 # Installation
 
-	npm install simple-js-validator
+    npm install simple-js-validator
 
 # Usage
 
 ###client side (browser)
 
-	<script src="../lib/simple.js.validator.js" ></script>
-	<script type="text/javascript">
+    <script src="../lib/simple.js.validator.js" ></script>
+    <script type="text/javascript">
         $(function(){
         	var someVar;
         	if (sjv.isDefined(someVar)) {
-        		// do something 
+        		// do something
         	}
-        	
+
         	if (sjv.isEmpty(someVar)) {
         		// do something else
         	}
-	</script>
+    </script>
 
 ###server side (Node)
 
-	var sjv = require('simple-js-validator');
+    var sjv = require('simple-js-validator');
     var someVar;
     if (sjv.isDefined(someVar)) {
-        // do something 
+        // do something
     }
-        	
+
     if (sjv.isEmpty(someVar)) {
         // do something else
     }
-	
+
 # Road Map
+
 <table>
 	<tr>
 		<td>1.0</td>
@@ -134,22 +137,23 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 ### Note to myself
 
 - Make sure working in dev branch
-- When updates are complete, run `yarn test` or `yarn test:coverage` to verify all tests are passing without or with test coverage.  
+- When updates are complete, run `yarn test` or `yarn test:coverage` to verify all tests are passing without or with test coverage.
 - Run `yarn lint` to verify all lint checks are passing.
 - Run `yarn grunt bump` to update version (grunt bump:patch, grunt bump:minor) or update package.json directly
 - Update release history and version ref at top of sjv js file
-- Then run "grunt release".
+- Then run `yarn grunt release`.
 - When it is complete, git commit, git push, and git push --tags
 - Wait for travis build confirmation
 - Make pull request to master
 - Wait for travis build confirmation
 - Pull down master locally
-- Just to verify, run "grunt test" to verify all tests are passing.  Run "grunt hint" to verify all jshint checks are passing.
+- Just to verify, run "grunt test" to verify all tests are passing. Run "grunt hint" to verify all jshint checks are passing.
 - Run "npm publish"
 - Go back to dev branch
 - Cele!!!
 
 # Release History
+
 <table>
 	<tr>
 		<td>2.0.0</td>
@@ -277,5 +281,3 @@ Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/Simpl
 		<td>Initial documentation.</td>
 	</tr>
 </table>
-
-
