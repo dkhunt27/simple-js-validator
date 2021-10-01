@@ -1,0 +1,77 @@
+name: On Push
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install
+        run: |
+          yarn install
+
+      - name: Test
+        run: |
+          yarn test:coverage
+
+      - name: Lint
+        run: |
+          yarn lint:prod
+
+      - name: Build
+        run: |
+          yarn build
+
+      - name: Minify
+        run: |
+          yarn minify
+
+      - name: Build Docs
+        run: |
+          yarn docs
+
+      - name: Deploy Docs
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: docs # The folder the action should deploy.
+
+      # https://dev.to/thejaredwilcurt/coverage-badge-with-github-actions-finally-59fa
+      - if: ${{ matrix.node-version == '16.x' }}
+        name: Get Coverage for badge
+        run: |
+          yarn test:coverage --coverageReporters="json-summary"
+          COVERAGE=$(cat .coverage/coverage-summary.json | yarn json total.lines.pct | tail -2 | head -1)
+          echo "COVERAGE=$COVERAGE"
+          echo "COVERAGE=$(echo ${COVERAGE})" >> $GITHUB_ENV
+          REF=${{ github.ref }}
+          echo "github.ref: $REF"
+          IFS='/' read -ra PATHS <<< "$REF"
+          BRANCH_NAME="${PATHS[1]}_${PATHS[2]}"
+          echo "BRANCH_NAME=$BRANCH_NAME"
+          echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
+      - if: ${{ matrix.node-version == '16.x' }}
+        name: Create the Badge
+        uses: schneegans/dynamic-badges-action@v1.0.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: e35a3788f0a2b9faec15f7869073a515
+          filename: simple-js-validator__${{ env.BRANCH }}.json
+          label: Test Coverage
+          message: ${{ env.COVERAGE }}
+          color: green
+          namedLogo: jest

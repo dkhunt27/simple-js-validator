@@ -1,0 +1,13 @@
+{
+  "depcheck": 
+  {
+    "ignoreMatches": 
+    [
+      "@types/*",
+      "npm-check-pr397",
+      "prettier",
+      "rimraf",
+      "yorkie"
+    ]
+  }
+}

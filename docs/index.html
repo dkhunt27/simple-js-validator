@@ -1,59 +1,270 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Documentation  -  JSDuck</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta name="fragment" content="!">
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>simple-js-validator</title><meta name="description" content="Documentation for simple-js-validator"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">simple-js-validator</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>simple-js-validator</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography"><p><a href="http://badge.fury.io/js/simple-js-validator"><img src="https://badge.fury.io/js/simple-js-validator.png" alt="NPM version"></a> <a href="https://travis-ci.org/dkhunt27/simple-js-validator?branch=master"><img src="https://api.travis-ci.org/dkhunt27/simple-js-validator.png?branch=master" alt="Build Status-master"></a> <a href="https://coveralls.io/github/dkhunt27/simple-js-validator?branch=master"><img src="https://coveralls.io/repos/github/dkhunt27/simple-js-validator/badge.svg?branch=master" alt="Coverage Status"></a></p>
 
+<a href="#simple-js-validator" id="simple-js-validator" style="color: inherit; text-decoration: none;">
+  <h1>simple-js-validator</h1>
+</a>
+<p>Perform simple javascript validation like isEmpty and isDefined in a consistent manner.</p>
 
+<a href="#the-trials-and-tribulations-of-the-truthy-test" id="the-trials-and-tribulations-of-the-truthy-test" style="color: inherit; text-decoration: none;">
+  <h3>The trials and tribulations of the truthy test</h3>
+</a>
+<pre><code><span class="hl-0">if</span><span class="hl-1"> (</span><span class="hl-2">someVar</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-3">// do something</span><br/><span class="hl-1">}</span>
+</code></pre>
+<p>In javascript, the typical truthy test is if(someVar) or if(!someVar). In my opinion, this does not always work as expected. This is probably due to the fact that I use the truthy test to perform two distinct tests. It is used to check if someVar is true and it is used to check if something &quot;exists&quot;. But I don&#39;t think it behaves as one would expect in either case…it&#39;s close, but not 100%</p>
 
-  <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
-  <link rel="stylesheet" href="resources/css/app-4689d2a5522dcd3c9e9923ca59c33f27.css" type="text/css" />
-  <link rel="stylesheet" href="styles-3eba09980fa05ead185cb17d9c0deb0f.css" type="text/css" />
+<a href="#as-a-quottruequot-test" id="as-a-quottruequot-test" style="color: inherit; text-decoration: none;">
+  <h4>As a &quot;true&quot; test</h4>
+</a>
+<p>If using this as a test to see if someVar = true, it works as expected…for the most part. It is a little odd to me that an empty object or array &quot;equals&quot; true. Or any integer (except 0), object, array, date, or string also &quot;equals&quot; true. It might be that eventhough it is a &quot;truthy&quot; test, it is not meant to be &quot;equals&quot; true. That just might be my c# background coming through there.</p>
 
-  <script type="text/javascript" src="extjs/ext-all.js"></script>
-  <script type="text/javascript" src="data-4c5b2625ca3604d249dc7a7c4ff33fc0.js"></script>
+<a href="#as-an-quotexistancequot-test" id="as-an-quotexistancequot-test" style="color: inherit; text-decoration: none;">
+  <h4>As an &quot;existance&quot; test</h4>
+</a>
+<p>If using this as a test to see if something &quot;exists&quot;, it really doesn&#39;t work as expected either. To me a value of false or 0 exist. And whether you think an empty object or an array &quot;exist&quot; or not…Do you consider being empty existing?…it strikes me as odd that an empty object/array returns true, but an empty string returns false. Doesn&#39;t seem consistent.</p>
+<p>I am sure there are reasons why the test perfroms the way it does and I might be just using it incorrectly, but too many times I have had to go back and debug some if statement because of the above scenarios.</p>
 
-  <script type="text/javascript" src="app-0c945a27f43452df695771ddb60b3d14.js"></script>
+<a href="#typeof--undefined" id="typeof--undefined" style="color: inherit; text-decoration: none;">
+  <h5>typeof === undefined</h5>
+</a>
+<p>Furthermore, the typeof undefined test is not how I would expect…or maybe prefer is the better term. Yes, it tells you if it is &quot;undefined&quot;, but to me null is not defined. I didn&#39;t want to have to perform two checks everytime I want to use an object becuase the following code works fin</p>
+<pre><code><span class="hl-3">//THIS WORKS                             |    //THIS FAILS</span><br/><span class="hl-4">var</span><span class="hl-1"> </span><span class="hl-2">someVar</span><span class="hl-1">;                             |    </span><span class="hl-4">var</span><span class="hl-1"> </span><span class="hl-2">someVar</span><span class="hl-1"> = </span><span class="hl-4">null</span><span class="hl-1">;</span><br/><span class="hl-0">if</span><span class="hl-1"> (</span><span class="hl-4">typeof</span><span class="hl-1"> </span><span class="hl-2">someVar</span><span class="hl-1"> !== </span><span class="hl-4">undefined</span><span class="hl-1">) {      |   </span><span class="hl-0">if</span><span class="hl-1"> (</span><span class="hl-4">typeof</span><span class="hl-1"> </span><span class="hl-2">someVar</span><span class="hl-1"> !== </span><span class="hl-4">undefined</span><span class="hl-1">) {</span><br/><span class="hl-1">    </span><span class="hl-2">someVar</span><span class="hl-1">.</span><span class="hl-2">foo</span><span class="hl-1"> = </span><span class="hl-5">&quot;bar&quot;</span><span class="hl-1">                  |      </span><span class="hl-2">someVar</span><span class="hl-1">.</span><span class="hl-2">foo</span><span class="hl-1"> = </span><span class="hl-5">&quot;bar&quot;</span><br/><span class="hl-1">}                                        |   }</span>
+</code></pre>
+<p>And if you expected to have a number and you got NaN…then technically that is not defined. Probably just semantics or my OCD programming.</p>
 
+<a href="#simple-javascript-validators" id="simple-javascript-validators" style="color: inherit; text-decoration: none;">
+  <h4>simple javascript validators</h4>
+</a>
+<p>From the above scenarios, I created several simple functions that will output exactly what I expect them to. I decided to break apart the &quot;existance&quot; test into isDefined (meaning empty things are defined) and isEmpty (meaning it must contain something).</p>
+<p>In a future version, I will also add a isTrue which will only return true if the value is &quot;true&quot;, 1, or true and an isFalse which will only return true if the value is &quot;false&quot;, 0, or false</p>
 
+<a href="#visualizeand-attack" id="visualizeand-attack" style="color: inherit; text-decoration: none;">
+  <h4>Visualize….and ATTACK</h4>
+</a>
+<p>Here is a simple table to illustrate the differences.</p>
+<img src="./img/comparison.png" />
 
-</head>
-<body id="ext-body">
+<p>Please see the <a href="http://dkhunt27.github.io/simpleJSValidator/#!/api/SimpleJS.Validator" target="_blank">docs/index.html</a> for more details. If link does not work, just open the index.html in the docs folder.</p>
 
-  <div id="loading"><span class="title">Documentation - JSDuck</span><span class="logo"></span></div>
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h1>Installation</h1>
+</a>
+<pre><code><span class="hl-2">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">simple</span><span class="hl-1">-</span><span class="hl-2">js</span><span class="hl-1">-</span><span class="hl-2">validator</span>
+</code></pre>
 
-  <div id="header-content"><strong>Documentation</strong> JSDuck</div>
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h1>Usage</h1>
+</a>
+<p>###client side (browser)</p>
+<pre><code><span class="hl-1">&lt;</span><span class="hl-2">script</span><span class="hl-1"> </span><span class="hl-2">src</span><span class="hl-1">=</span><span class="hl-5">&quot;../lib/simple.js.validator.js&quot;</span><span class="hl-1"> &gt;&lt;/</span><span class="hl-6">script</span><span class="hl-1">&gt;</span><br/><span class="hl-1">&lt;</span><span class="hl-2">script</span><span class="hl-1"> </span><span class="hl-2">type</span><span class="hl-1">=</span><span class="hl-5">&quot;text/javascript&quot;</span><span class="hl-1">&gt;</span><br/><span class="hl-1">    </span><span class="hl-7">$</span><span class="hl-1">(</span><span class="hl-4">function</span><span class="hl-1">(){</span><br/><span class="hl-1">        </span><span class="hl-4">var</span><span class="hl-1"> </span><span class="hl-2">someVar</span><span class="hl-1">;</span><br/><span class="hl-1">        </span><span class="hl-0">if</span><span class="hl-1"> (</span><span class="hl-2">sjv</span><span class="hl-1">.</span><span class="hl-7">isDefined</span><span class="hl-1">(</span><span class="hl-2">someVar</span><span class="hl-1">)) {</span><br/><span class="hl-1">            </span><span class="hl-3">// do something</span><br/><span class="hl-1">        }</span><br/><br/><span class="hl-1">        </span><span class="hl-0">if</span><span class="hl-1"> (</span><span class="hl-2">sjv</span><span class="hl-1">.</span><span class="hl-7">isEmpty</span><span class="hl-1">(</span><span class="hl-2">someVar</span><span class="hl-1">)) {</span><br/><span class="hl-1">            </span><span class="hl-3">// do something else</span><br/><span class="hl-1">        }</span><br/><span class="hl-1">&lt;/</span><span class="hl-2">script</span><span class="hl-1">&gt;</span>
+</code></pre>
+<p>###server side (Node)</p>
+<pre><code><span class="hl-4">var</span><span class="hl-1"> </span><span class="hl-2">sjv</span><span class="hl-1"> = </span><span class="hl-7">require</span><span class="hl-1">(</span><span class="hl-5">&#39;simple-js-validator&#39;</span><span class="hl-1">);</span><br/><span class="hl-4">var</span><span class="hl-1"> </span><span class="hl-2">someVar</span><span class="hl-1">;</span><br/><span class="hl-0">if</span><span class="hl-1"> (</span><span class="hl-2">sjv</span><span class="hl-1">.</span><span class="hl-7">isDefined</span><span class="hl-1">(</span><span class="hl-2">someVar</span><span class="hl-1">)) {</span><br/><span class="hl-1">    </span><span class="hl-3">// do something</span><br/><span class="hl-1">}</span><br/><br/><span class="hl-0">if</span><span class="hl-1"> (</span><span class="hl-2">sjv</span><span class="hl-1">.</span><span class="hl-7">isEmpty</span><span class="hl-1">(</span><span class="hl-2">someVar</span><span class="hl-1">)) {</span><br/><span class="hl-1">    </span><span class="hl-3">// do something else</span><br/><span class="hl-1">}</span>
+</code></pre>
 
-            <div id='categories-content' style='display:none'>
-            <div class='section'>
-<h1>SimpleJSValidator</h1>
-<div class='left-column'>
-<h3>Classes</h3>
-<ul class='links'>
+<a href="#road-map" id="road-map" style="color: inherit; text-decoration: none;">
+  <h1>Road Map</h1>
+</a>
+<table>
+    <tr>
+        <td>1.0</td>
+        <td>isEmpty, isNotEmpty, isDefined, and isNotDefined functions.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>isTrue function that only returns true if "true", true, or 1 and inverse isFalse function</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>isObject, isNotObject, isEmptyObject, and isNotEmptyObject functions</td>
+    </tr>   
+    <tr>
+        <td></td>
+        <td>isArray, isNotArray, isEmptyArray, and isNotEmptyArray functions</td>
+    </tr>   
+    <tr>
+        <td></td>
+        <td>validateFunctionInputs Defined/NotEmpty Sync/Async/CallbackOnError/Promise functions</td>
+    </tr>        
+    <tr>
+        <td></td>
+        <td>Works in client (browser) and server (Node).</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>100% unit test coverage.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Use grunt to build, minify, test, jshint, and publish package.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Publish to npm with only required files.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Documentation on installation, use cases, and code examples.</td>
+    </tr>
+    <tr>
+        <td>2.0</td>
+        <td>isAsExpected where user can define their expected results for each case.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Update isEmpty, isNotEmpty, isDefined, and isNotDefined functions to use config so user can redefine to their expectations (if different from default).  Essentially the same thing as isAsExpected, but this way they can use the easier to read isEmpty, isNotEmpty, isDefined, and isNotDefined names.</td>
+    </tr>
+</table>
+ 
+
+<a href="#note-to-myself" id="note-to-myself" style="color: inherit; text-decoration: none;">
+  <h3>Note to myself</h3>
+</a>
+<ul>
+<li>Make sure working in dev branch</li>
+<li>When updates are complete, run <code>yarn test</code> or <code>yarn test:coverage</code> to verify all tests are passing without or with test coverage.</li>
+<li>Run <code>yarn lint</code> to verify all lint checks are passing.</li>
+<li>Run <code>yarn grunt bump</code> to update version (grunt bump:patch, grunt bump:minor) or update package.json directly</li>
+<li>Update release history and version ref at top of sjv js file</li>
+<li>Then run <code>yarn grunt release</code>.</li>
+<li>When it is complete, git commit, git push, and git push --tags</li>
+<li>Wait for travis build confirmation</li>
+<li>Make pull request to master</li>
+<li>Wait for travis build confirmation</li>
+<li>Pull down master locally</li>
+<li>Just to verify, run <code>yarn test</code> to verify all tests are passing.</li>
+<li>Run <code>npm publish</code></li>
+<li>Go back to dev branch</li>
+<li>Cele!!!</li>
 </ul>
-</div>
-<div class='middle-column'>
-</div>
-<div class='right-column'>
-</div>
-<div style='clear:both'></div>
-</div>
-          </div>
 
-
-
-  <div id='footer-content' style='display: none'>Generated on Fri 01 Apr 2016 12:11:04 by <a href='https://github.com/senchalabs/jsduck'>JSDuck</a> 5.3.4.</div>
-
-
-
-  <script type="text/javascript">
-  (function(){
-    var protocol = (document.location.protocol === "https:") ? "https:" : "http:";
-    document.write("<link href='"+protocol+"//fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />");
-  })();
-  </script>
-
-</body>
-</html>
+<a href="#release-history" id="release-history" style="color: inherit; text-decoration: none;">
+  <h1>Release History</h1>
+</a>
+<table>
+    <tr>
+        <td>2.0.0</td>
+        <td>2021-10-01</td>
+        <td>Updated to typescript; Removed all validateFunction and validationInput functions; Removed getPropertyByString, setPropertyByString, assertNestedListIsDefined, and assertNestedIsDefined; updated package refs</td>
+    </tr>
+    <tr>
+        <td>1.0.0</td>
+        <td>2020-01-10</td>
+        <td>Added isUniqueObject and isNotUniqueObject; removed isDate, isNotDate, isError, and isNotError; updated package refs</td>
+    </tr>
+    <tr>
+        <td>0.13.0</td>
+        <td>2018-05-07</td>
+        <td>Added assertNestedListIsDefined and assertNestedIsDefined; updated package refs</td>
+    </tr>
+    <tr>
+        <td>0.12.3</td>
+        <td>2018-03-21</td>
+        <td>Fixed bug in setPropertyByString</td>
+    </tr>
+    <tr>
+        <td>0.12.2</td>
+        <td>2016-04-01</td>
+        <td>Fixed coverage badge; updated roadmap</td>
+    </tr>
+    <tr>
+        <td>0.12.1</td>
+        <td>2016-04-01</td>
+        <td>Fixed bug in isObject populated object test.  Added isNotObject, isEmptyObject, isNotEmptyObject, isNotArray, isEmptyArray, isNotEmptyArray</td>
+    </tr>
+    <tr>
+        <td>0.12.0</td>
+        <td>2016-04-01</td>
+        <td>Added more test coverage; wire up coveralls.io</td>
+    </tr>
+    <tr>
+        <td>0.11.5</td>
+        <td>2015-12-18</td>
+        <td>Added bower support</td>
+    </tr>
+    <tr>
+        <td>0.11.3</td>
+        <td>2015-02-05</td>
+        <td>Added CallbackOnError to the validate methods</td>
+    </tr>
+    <tr>
+        <td>0.10.1</td>
+        <td>2014-10-02</td>
+        <td>Added isTrue and isFalse. Minor update to improve error message. Updated all dependencies</td>
+    </tr>
+    <tr>
+        <td>0.9.12</td>
+        <td>2014-03-10</td>
+        <td>Added setPropertyByString.</td>
+    </tr>
+    <tr>
+        <td>0.9.9</td>
+        <td>2013-08-28</td>
+        <td>Updated isEmpty to handle new Error() correctly.</td>
+    </tr>
+    <tr>
+    <td></td>
+    <td></td>
+    <td>Added isDate, isArray, isObject helper functions.</td>
+  </tr>
+    <tr>
+    <td></td>
+    <td></td>
+    <td>Added functions to ease the checking of functions inputs/objects.</td>
+  </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Works in client (browser) and server (Node).</td>
+    </tr>
+  <tr>
+    <td>0.9.8</td>
+    <td>2013/08/15</td>
+    <td>Improved documentation.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>Works in client (browser) and server (Node).</td>
+  </tr>
+    <tr>
+        <td>0.9.7</td>
+        <td>2013/07/30</td>
+        <td>Initial Release.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>isEmpty, isNotEmpty, isDefined, and isNotDefined functions.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Assert (throw an error) for the functions.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Works in server.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Test coverage is high, but not 100%.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Uses grunt to build, minify, test, jshint, and publish package.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Also using travis for CI.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Initial documentation.</td>
+    </tr>
+</table>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-property"><a href="modules.html#default" class="tsd-kind-icon">default</a></li><li class="tsd-kind-function"><a href="modules.html#assertIsDefined" class="tsd-kind-icon">assert<wbr/>Is<wbr/>Defined</a></li><li class="tsd-kind-function"><a href="modules.html#assertIsEmpty" class="tsd-kind-icon">assert<wbr/>Is<wbr/>Empty</a></li><li class="tsd-kind-function"><a href="modules.html#assertIsNotDefined" class="tsd-kind-icon">assert<wbr/>Is<wbr/>Not<wbr/>Defined</a></li><li class="tsd-kind-function"><a href="modules.html#assertIsNotEmpty" class="tsd-kind-icon">assert<wbr/>Is<wbr/>Not<wbr/>Empty</a></li><li class="tsd-kind-function"><a href="modules.html#isArray" class="tsd-kind-icon">is<wbr/>Array</a></li><li class="tsd-kind-function"><a href="modules.html#isDefined" class="tsd-kind-icon">is<wbr/>Defined</a></li><li class="tsd-kind-function"><a href="modules.html#isEmpty" class="tsd-kind-icon">is<wbr/>Empty</a></li><li class="tsd-kind-function"><a href="modules.html#isEmptyArray" class="tsd-kind-icon">is<wbr/>Empty<wbr/>Array</a></li><li class="tsd-kind-function"><a href="modules.html#isEmptyObject" class="tsd-kind-icon">is<wbr/>Empty<wbr/>Object</a></li><li class="tsd-kind-function"><a href="modules.html#isFalse" class="tsd-kind-icon">is<wbr/>False</a></li><li class="tsd-kind-function"><a href="modules.html#isNAN" class="tsd-kind-icon">isNAN</a></li><li class="tsd-kind-function"><a href="modules.html#isNotArray" class="tsd-kind-icon">is<wbr/>Not<wbr/>Array</a></li><li class="tsd-kind-function"><a href="modules.html#isNotDefined" class="tsd-kind-icon">is<wbr/>Not<wbr/>Defined</a></li><li class="tsd-kind-function"><a href="modules.html#isNotEmpty" class="tsd-kind-icon">is<wbr/>Not<wbr/>Empty</a></li><li class="tsd-kind-function"><a href="modules.html#isNotEmptyArray" class="tsd-kind-icon">is<wbr/>Not<wbr/>Empty<wbr/>Array</a></li><li class="tsd-kind-function"><a href="modules.html#isNotEmptyObject" class="tsd-kind-icon">is<wbr/>Not<wbr/>Empty<wbr/>Object</a></li><li class="tsd-kind-function"><a href="modules.html#isNotObject" class="tsd-kind-icon">is<wbr/>Not<wbr/>Object</a></li><li class="tsd-kind-function"><a href="modules.html#isNotUniqueObject" class="tsd-kind-icon">is<wbr/>Not<wbr/>Unique<wbr/>Object</a></li><li class="tsd-kind-function"><a href="modules.html#isObject" class="tsd-kind-icon">is<wbr/>Object</a></li><li class="tsd-kind-function"><a href="modules.html#isTrue" class="tsd-kind-icon">is<wbr/>True</a></li><li class="tsd-kind-function"><a href="modules.html#isUniqueObject" class="tsd-kind-icon">is<wbr/>Unique<wbr/>Object</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
