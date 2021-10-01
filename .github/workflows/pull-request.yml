@@ -1,4 +1,4 @@
-name: NodeJS with Grunt
+name: On Pull Request
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
     - name: Build
       run: |
         yarn install
-        yarn run:build
+        yarn build
 
     - name: Lint
       run: |
