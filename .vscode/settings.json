@@ -1,4 +1,4 @@
 {
   "javascript.implicitProjectConfig.checkJs": true,
-  "cSpell.words": ["isdefined", "isempty", "nofix", "typedoc", "uglifyjs"]
+  "cSpell.words": ["Cele", "isdefined", "isempty", "nofix", "typedoc", "typeof", "uglifyjs"]
 }
