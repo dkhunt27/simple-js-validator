@@ -32,6 +32,13 @@
     "test": "yarn jest --testMatch='**/tests/**/?(*.)+(test).(ts)'"
   },
   "main": "dist/simple.js.validator.js",
+  "files": [
+    "dist/*",
+    "package.json",
+    "README.md",
+    "yarn.lock",
+    "docs/*"
+  ],
   "devDependencies": {
     "@types/jest": "^27.0.2",
     "@types/node": "^16.10.2",
